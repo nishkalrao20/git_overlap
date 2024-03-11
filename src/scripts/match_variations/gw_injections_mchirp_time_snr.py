@@ -1,0 +1,158 @@
+# Generate BBH Injections (SINGLES/ PAIRS) resembling merger events and inject into detectors (H1, L1, V1) 
+
+import bilby
+import pickle
+import numpy as np
+import pycbc.waveform
+from pesummary.io import read
+import matplotlib.pyplot as plt
+
+# Preamble
+
+delta_f = 1
+duration = 100
+minimum_frequency = 20
+reference_frequency = 50   # Most sensitive frequency
+maximum_frequency = 1024
+sampling_frequency = 2048
+
+# Reading the posterior samples from GWTC release, and indexing the MAP values (https://zenodo.org/record/6513631)
+
+injection_a = read('git_overlap/src/data/IGWN-GWTC2p1-v2-GW150914_095045_PEDataRelease_mixed_cosmo.h5').samples_dict['C01:IMRPhenomXPHM']   # Loading the GW150914 Posterior distributions
+
+nmap_a = np.argmax(injection_a['log_likelihood']+injection_a['log_prior'])   # Maximum A Posteriori values
+
+injection_parameters_a = {
+    "chirp_mass": injection_a['chirp_mass'][nmap_a], # Chirp mass of the binary black holes in solar masses
+    "mass_ratio": injection_a['mass_ratio'][nmap_a], # Mass ratio of the binary
+    "luminosity_distance": injection_a['luminosity_distance'][nmap_a], # Distance in Megaparsecs
+    "a_1": injection_a['a_1'][nmap_a], # Dimensionless spin of the heavier black hole
+    "a_2": injection_a['a_2'][nmap_a], # Dimensionless spin of the lighter black hole    "ra": injection_a['ra'][nmap_a], # Right ascension of the source, in degrees
+    "ra": injection_a['ra'][nmap_a], # Right Asencion of the source, in radians
+    "dec": injection_a['dec'][nmap_a], # Declination of the source, in radians
+    "tilt_1": injection_a['tilt_1'][nmap_a], # Tilt angle of heavier black hole, in radians
+    "tilt_2": injection_a['tilt_2'][nmap_a], # Tilt angle of lighter black hole, in radians
+    "theta_jn": injection_a['theta_jn'][nmap_a], # Angle between the total angular momentum and line of sight
+    "phase": injection_a['phase'][nmap_a], # Orbital phase at coalescence
+    "psi": injection_a['psi'][nmap_a], # Polarization angle
+    "incl": injection_a['iota'][nmap_a], # Inclination of the orbital angular momentum with respect to the line of sight
+    "geocent_time": injection_a['geocent_time'][nmap_a] # GPS time of the event
+}
+
+N_sampl = 125
+injection_parameters_b = []
+mchirp_a = injection_a['chirp_mass'][nmap_a]
+luminosity_distance_a = injection_a['luminosity_distance'][nmap_a]
+
+delta_tc = np.linspace(-2.0, 2.0, 5)
+mchirp_b = np.linspace(0.5*mchirp_a, 2.0*mchirp_a, 5)
+luminosity_distance_b = np.linspace(0.5*luminosity_distance_a, 2.0*luminosity_distance_a, 5)
+delta_tc_grid, mchirp_b_grid, luminosity_distance_b_grid = np.meshgrid(delta_tc, mchirp_b, luminosity_distance_b)
+
+for i in range(N_sampl):
+    injection_parameters_b.append({
+        "chirp_mass": mchirp_b_grid.flatten()[i], # Chirp mass of the binary black holes in solar masses
+        "mass_ratio": injection_a['mass_ratio'][nmap_a], # Mass ratio of the binary
+        "luminosity_distance": luminosity_distance_b_grid.flatten()[i], # Distance in Megaparsecs
+        "a_1": injection_a['a_1'][nmap_a], # Dimensionless spin of the heavier black hole
+        "a_2": injection_a['a_2'][nmap_a], # Dimensionless spin of the lighter black hole        "ra": injection_a['ra'][nmap_a], # Right ascension of the source, in degrees
+        "ra": injection_a['ra'][nmap_a], # Right Asencion of the source, in radians
+        "dec": injection_a['dec'][nmap_a], # Declination of the source, in radians
+        "tilt_1": injection_a['tilt_1'][nmap_a], # Tilt angle of heavier black hole, in radians
+        "tilt_2": injection_a['tilt_2'][nmap_a], # Tilt angle of lighter black hole, in radians
+        "theta_jn": injection_a['theta_jn'][nmap_a], # Angle between the total angular momentum and line of sight
+        "phase": injection_a['phase'][nmap_a], # Orbital phase at coalescence
+        "psi": injection_a['psi'][nmap_a], # Polarization angle
+        "incl": injection_a['iota'][nmap_a], # Inclination of the orbital angular momentum with respect to the line of sight
+        "geocent_time": injection_a['geocent_time'][nmap_a]+delta_tc_grid.flatten()[i] # GPS time of the event
+    })
+
+def psd_gen(det):
+    """Reading the PSD files for the detectors"""
+
+    if det == 'H1':
+        psd = pycbc.psd.read.from_txt('git_overlap/src/psds/O3-H1-C01_CLEAN_SUB60HZ-1251752040.0_sensitivity_strain_asd.txt', sampling_frequency, delta_f, minimum_frequency, is_asd_file=True)
+    if det == 'L1':
+        psd = pycbc.psd.read.from_txt('git_overlap/src/psds/O3-L1-C01_CLEAN_SUB60HZ-1240573680.0_sensitivity_strain_asd.txt', sampling_frequency, delta_f, minimum_frequency, is_asd_file=True)
+    if det == 'V1':
+        psd = pycbc.psd.read.from_txt('git_overlap/src/psds/O3-V1_sensitivity_strain_asd.txt', sampling_frequency, delta_f, minimum_frequency, is_asd_file=True)
+
+    return psd
+
+def snr(injection_parameters):
+    """Evaluates the matched filter signal-to-noise ratio (through PyCBC) for the set of waveforms generated by the injection parameters"""
+
+    mass_1, mass_2 = injection_parameters['chirp_mass']*np.power(1+injection_parameters['mass_ratio'],1/5)/np.power(injection_parameters['mass_ratio'],3/5), injection_parameters['chirp_mass']*np.power(1+injection_parameters['mass_ratio'],1/5)*np.power(injection_parameters['mass_ratio'],2/5)
+    luminosity_distance = injection_parameters['luminosity_distance']
+    a_1, a_2 = injection_parameters['a_1'], injection_parameters['a_2']
+    incl, phase = injection_parameters['incl'], injection_parameters['phase']
+    ra, dec, psi, geocent_time = injection_parameters['ra'], injection_parameters['dec'], injection_parameters['psi'], injection_parameters['geocent_time']
+
+    hp, hc = pycbc.waveform.get_fd_waveform(approximant = 'IMRPhenomPv2', mass1 = mass_1, mass2 = mass_2, distance = luminosity_distance, spin1x = a_1, spin2x = a_2, 
+                                            inclination = incl, coa_phase = phase, delta_f = delta_f, f_lower = minimum_frequency, f_final = maximum_frequency) 
+     
+    snrs = dict() 
+    for det in ['H1', 'L1', 'V1']:
+
+        det_obj = pycbc.detector.Detector(det)
+
+        Fp, Fc = det_obj.antenna_pattern(ra, dec, psi, geocent_time)
+        h = Fp*hp + Fc*hc
+
+        snrs[det] = pycbc.filter.matchedfilter.sigma(h, psd = psd_gen(det), low_frequency_cutoff = minimum_frequency, high_frequency_cutoff = maximum_frequency)
+    
+    return snrs['H1'], snrs['L1'], snrs['V1']
+
+# Rescaling the luminosity distance to adjust the SNR ratio
+
+snr_a_H1, snr_a_L1, snr_a_V1 = snr(injection_parameters_a)
+snr_b = np.linspace(0.5*snr_a_H1, 2.0*snr_a_H1, 5)
+delta_tc_grid, mchirp_b_grid, snr_b_grid = np.meshgrid(delta_tc, mchirp_b, snr_b)
+
+snr_b_H1, snr_b_L1, snr_b_V1 = np.vectorize(snr)(injection_parameters_b)
+for i in range(N_sampl):
+    injection_parameters_b[i]['luminosity_distance']*=snr_b_H1[i]/snr_b_grid.flatten()[i]
+snr_b_H1, snr_b_L1, snr_b_V1 = np.vectorize(snr)(injection_parameters_b)
+
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(snr_b_H1/snr_a_H1, mchirp_b_grid.flatten()/mchirp_a, delta_tc_grid.flatten())
+ax.set_ylabel('$\mathcal{M}_B/\mathcal{M}_A$')
+ax.set_xlabel('$\mathrm{SNR}_B/\mathrm{SNR}_A$')
+ax.set_zlabel('$\Delta t_c$')
+ax.set_title('Injection parameters')
+ax.ticklabel_format(useOffset=False, style='plain')
+plt.tight_layout()
+plt.savefig('git_overlap/src/output/match_variations/match_mchirp_time_snr/outputs/GWINJECTIONPARAMS.png')
+
+# Bilby's WaveformGenerator object to generate BBH waveforms
+
+start_time = injection_parameters_a['geocent_time']-duration+2
+
+waveform_generator_a = bilby.gw.WaveformGenerator(duration = duration, sampling_frequency = sampling_frequency, start_time = start_time,
+                                                  frequency_domain_source_model = bilby.gw.source.lal_binary_black_hole, 
+                                                  waveform_arguments = {'waveform_approximant': 'IMRPhenomXPHM', 'reference_frequency': reference_frequency, 'minimum_frequency': minimum_frequency})
+
+waveform_generator_b = bilby.gw.WaveformGenerator(duration=duration, sampling_frequency = sampling_frequency, start_time = start_time,
+                                                  frequency_domain_source_model = bilby.gw.source.lal_binary_black_hole, 
+                                                  waveform_arguments = {'waveform_approximant': 'IMRPhenomXPHM', 'reference_frequency': reference_frequency, 'minimum_frequency': minimum_frequency})
+
+# Initializing the detectors as bilby interferometer objects with zero noise, and with GPS time around the geocenter time of the GW signal
+
+ifos, ifos_a, ifos_b = bilby.gw.detector.InterferometerList(['H1', 'L1', 'V1']), bilby.gw.detector.InterferometerList(['H1', 'L1', 'V1']), bilby.gw.detector.InterferometerList(['H1', 'L1', 'V1'])   # Initialize Detectors
+
+for det in [ifos, ifos_a, ifos_b]:
+    for ifo in det:
+        ifo.minimum_frequency, ifo.maximum_frequency  = minimum_frequency, sampling_frequency/2
+    det.set_strain_data_from_zero_noise(sampling_frequency = sampling_frequency, duration = duration, start_time = start_time)
+
+# Injecting the SINGLES GW signal into H1, L1, and V1 using bilby, and saving the parameters
+
+ifos_a.inject_signal(waveform_generator = waveform_generator_a, parameters = injection_parameters_a)    # SINGLES A
+with open('git_overlap/src/output/match_variations/match_mchirp_time_snr/injections/GW Waveform A Meta Data.pkl', 'wb') as file:
+    pickle.dump(ifos_a.meta_data, file) 
+
+for i in range(N_sampl):
+    ifos_b.inject_signal(waveform_generator = waveform_generator_b, parameters = injection_parameters_b[i])    # SINGLES B
+    with open('git_overlap/src/output/match_variations/match_mchirp_time_snr/injections/GW Waveform B Meta Data %s.pkl'%(i+1), 'wb') as file:
+        pickle.dump(ifos_b.meta_data, file)

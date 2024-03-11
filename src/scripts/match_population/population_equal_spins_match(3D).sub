@@ -1,0 +1,13 @@
+Universe = vanilla
+accounting_group = ligo.sim.o3.cbc.pe.bilby
+accounting_group_user = nishkal.rao
+Executable = /home/nishkal.rao/git_overlap/src/scripts/match_population/run_population_equal_spins_match(3D)_mchirp_time_effspin.py
+initialdir = /home/nishkal.rao/git_overlap/src/scripts/match_population/
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+getenv = True
+Arguments = $(Process)
+Log = /home/nishkal.rao/git_overlap/src/output/match_population/run_match_population_equal_spins/log/$(Process).log
+Output = /home/nishkal.rao/git_overlap/src/output/match_population/run_match_population_equal_spins/out/$(Process).out
+Error = /home/nishkal.rao/git_overlap/src/output/match_population/run_match_population_equal_spins/err/$(Process).err
+Queue 25

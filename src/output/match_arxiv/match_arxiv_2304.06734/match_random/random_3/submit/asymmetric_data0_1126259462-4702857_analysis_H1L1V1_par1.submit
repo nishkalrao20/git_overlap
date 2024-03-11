@@ -1,0 +1,25 @@
+universe = vanilla
+executable = /home/nishkal.rao/miniconda3/envs/igwn_py39-20230425/bin/bilby_pipe_analysis
+request_memory = 6.0GB
+request_disk = 5GB
+request_cpus = 12
+getenv = True
+initialdir = /home/nishkal.rao/git_overlap/src/output/match_arxiv/match_arxiv_2304.06734/match_random
+notification = Never
+requirements = 
+should_transfer_files = YES
+transfer_input_files = random_3/data/asymmetric_data0_1126259462-4702857_generation_data_dump.pickle,random_3/asymmetric_config_complete.ini,random_3/result/asymmetric_data0_1126259462-4702857_analysis_H1L1V1_par1_result.hdf5,random_3/result/asymmetric_data0_1126259462-4702857_analysis_H1L1V1_par1_resume.pickle,random_3/result/asymmetric_data0_1126259462-4702857_analysis_H1L1V1_par1_dynesty.pickle
+transfer_output_files = random_3
+when_to_transfer_output = ON_EXIT_OR_EVICT
+preserve_relative_paths = True
+stream_error = True
+stream_output = True
+checkpoint_exit_code = 77
+environment = "OMP_NUM_THREADS=1"
+log = random_3/log_data_analysis/asymmetric_data0_1126259462-4702857_analysis_H1L1V1_par1.log
+output = random_3/log_data_analysis/asymmetric_data0_1126259462-4702857_analysis_H1L1V1_par1.out
+error = random_3/log_data_analysis/asymmetric_data0_1126259462-4702857_analysis_H1L1V1_par1.err
+accounting_group = ligo.dev.o4.cbc.pe.lalinference
+priority = 0
+arguments = $(ARGS)
+queue

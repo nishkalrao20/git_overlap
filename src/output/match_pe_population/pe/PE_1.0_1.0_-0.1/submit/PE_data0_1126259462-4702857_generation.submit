@@ -1,0 +1,16 @@
+universe = local
+executable = /home/nishkal.rao/miniconda3/envs/gw_analysis/bin/bilby_pipe_generation
+request_memory = 8.0GB
+request_disk = 5.0GB
+request_cpus = 1
+getenv = True
+initialdir = /home/nishkal.rao
+notification = Never
+requirements = 
+log = git_overlap/src/output/pe_population/pe/PE_1.0_1.0_-0.1/log_data_generation/PE_data0_1126259462-4702857_generation.log
+output = git_overlap/src/output/pe_population/pe/PE_1.0_1.0_-0.1/log_data_generation/PE_data0_1126259462-4702857_generation.out
+error = git_overlap/src/output/pe_population/pe/PE_1.0_1.0_-0.1/log_data_generation/PE_data0_1126259462-4702857_generation.err
+accounting_group = ligo.dev.o4.cbc.pe.lalinference
+priority = 0
+arguments = $(ARGS)
+queue

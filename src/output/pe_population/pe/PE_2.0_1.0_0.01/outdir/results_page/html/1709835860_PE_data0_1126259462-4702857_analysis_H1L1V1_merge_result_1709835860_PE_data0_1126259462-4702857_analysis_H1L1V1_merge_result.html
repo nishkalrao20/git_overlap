@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+  <title>Summary Pages</title>
+<!--
+                                    Made by
+            ____  ___________
+           / __ \/ ____/ ___/__  ______ ___  ____ ___  ____ ________  __
+          / /_/ / __/  \__ \/ / / / __ `__ \/ __ `__ \/ __ `/ ___/ / / /
+         / ____/ /___ ___/ / /_/ / / / / / / / / / / / /_/ / /  / /_/ /
+        /_/   /_____//____/\__,_/_/ /_/ /_/_/ /_/ /_/\__,_/_/   \__, /
+                                                               /____/
+
+                                   MIT License
+
+       PESummary was developed by Hoy et al. and source code can be seen
+       here: git.ligo.org/lscsoft/pesummary. If you wish to use PESummary
+   for your own work, please cite PESummary. The following page gives details
+   https://lscsoft.docs.ligo.org/pesummary/stable_docs/citing_pesummary.html.
+                                     Thanks!
+  -->
+<html lang='en'>
+    <title>title</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+
+</head>
+<body style='background-color:#F8F8F8; margin-top:5em; min-height: 100%'>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <script src='../js/combine_corner.js'></script>
+    <script src='../js/grab.js'></script>
+    <script src='../js/modal.js'></script>
+    <script src='../js/multi_dropbar.js'></script>
+    <script src='../js/multiple_posteriors.js'></script>
+    <script src='../js/search.js'></script>
+    <script src='../js/side_bar.js'></script>
+    <script src='../js/html_to_csv.js'></script>
+    <script src='../js/html_to_json.js'></script>
+    <script src='../js/html_to_shell.js'></script>
+    <script src='../js/expert.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/image_styles.css">
+    <link rel="stylesheet" href="../css/watermark.css">
+    <link rel="stylesheet" href="../css/toggle.css">
+
+<div id='background'>
+<p id='bg-text'>Preliminary Preliminary</p>
+<p id='bg-text'>Preliminary Preliminary</p>
+<p id='bg-text'>Preliminary Preliminary</p>
+</div>
+<h7 hidden>1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result</h7>
+<h7 hidden>1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result</h7>
+<nav class='navbar navbar-expand-sm fixed-top navbar-custom' style='background-color: #0173b2'>
+  <a class='navbar-brand' href='#' style='color: white'>Navbar</a>
+  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#collapsibleNavbar'>
+    <span class='navbar-toggler-icon'></span>
+  </button>
+    <div class='collapse navbar-collapse' id='collapsibleNavbar'>
+      <ul class='navbar-nav'>
+        <li class='nav-item'>
+          <a class='nav-link' href='#' onclick='grab_html("home")'>home</a>
+        </li>
+        <li class='nav-item'>
+          <li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            Result Pages
+            </a>
+            <ul class='dropdown-menu' aria-labelledby='dropdown1'>
+              <li class='dropdown-item' href='#' onclick='grab_html("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result</a></li>
+            </ul>
+          </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='#' onclick='grab_html("Corner", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'>Corner</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='#' onclick='grab_html("Config", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'>Config</a>
+        </li>
+        <li class='nav-item'>
+          <li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            1d Histograms
+            </a>
+            <ul class='dropdown-menu' aria-labelledby='dropdown1'>
+              <li class='dropdown-item' href='#' onclick='grab_html("Custom", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>Custom</a></li>
+              <li class='dropdown-item' href='#' onclick='grab_html("All", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>All</a></li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='masses' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>masses</a>
+                <ul class='dropdown-menu' aria-labelledby='masses'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("masses_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>masses_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chirp_mass", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>chirp_mass</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("inverted_mass_ratio", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>inverted_mass_ratio</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_1", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>mass_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_2", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>mass_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_ratio", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>mass_ratio</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("symmetric_mass_ratio", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>symmetric_mass_ratio</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("total_mass", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>total_mass</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='source' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>source</a>
+                <ul class='dropdown-menu' aria-labelledby='source'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("source_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>source_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chirp_mass_source", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>chirp_mass_source</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_1_source", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>mass_1_source</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_2_source", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>mass_2_source</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("total_mass_source", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>total_mass_source</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='remnant' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>remnant</a>
+                <ul class='dropdown-menu' aria-labelledby='remnant'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("remnant_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>remnant_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("final_mass_non_evolved", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>final_mass_non_evolved</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("final_mass_source_non_evolved", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>final_mass_source_non_evolved</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("final_spin_non_evolved", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>final_spin_non_evolved</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='inclination' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>inclination</a>
+                <ul class='dropdown-menu' aria-labelledby='inclination'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("inclination_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>inclination_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("cos_iota", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>cos_iota</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("cos_theta_jn", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>cos_theta_jn</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("iota", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>iota</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("theta_jn", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>theta_jn</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("viewing_angle", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>viewing_angle</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='spins' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>spins</a>
+                <ul class='dropdown-menu' aria-labelledby='spins'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spins_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>spins_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("a_1", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>a_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("a_2", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>a_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_eff", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>chi_eff</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_p", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>chi_p</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_p_2spin", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>chi_p_2spin</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_1x", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>spin_1x</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_1y", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>spin_1y</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_1z", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>spin_1z</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_2x", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>spin_2x</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_2y", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>spin_2y</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_2z", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>spin_2z</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='spin_angles' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>spin_angles</a>
+                <ul class='dropdown-menu' aria-labelledby='spin_angles'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_angles_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>spin_angles_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("beta", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>beta</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("cos_tilt_1", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>cos_tilt_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("cos_tilt_2", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>cos_tilt_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phi_1", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>phi_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phi_12", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>phi_12</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phi_2", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>phi_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phi_jl", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>phi_jl</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("tilt_1", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>tilt_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("tilt_2", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>tilt_2</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='tidal' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>tidal</a>
+                <ul class='dropdown-menu' aria-labelledby='tidal'>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='location' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>location</a>
+                <ul class='dropdown-menu' aria-labelledby='location'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("location_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>location_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("comoving_distance", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>comoving_distance</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("dec", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>dec</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("luminosity_distance", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>luminosity_distance</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("psi", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>psi</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("psi_J", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>psi_J</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("ra", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>ra</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("redshift", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>redshift</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='timings' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>timings</a>
+                <ul class='dropdown-menu' aria-labelledby='timings'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("timings_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>timings_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_time", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>H1_time</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_time", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>L1_time</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_time", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>V1_time</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("geocent_time", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>geocent_time</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='SNR' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>SNR</a>
+                <ul class='dropdown-menu' aria-labelledby='SNR'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("SNR_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>SNR_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_matched_filter_abs_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>H1_matched_filter_abs_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_matched_filter_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>H1_matched_filter_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_matched_filter_snr_angle", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>H1_matched_filter_snr_angle</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_optimal_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>H1_optimal_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_matched_filter_abs_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>L1_matched_filter_abs_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_matched_filter_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>L1_matched_filter_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_matched_filter_snr_angle", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>L1_matched_filter_snr_angle</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_optimal_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>L1_optimal_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_matched_filter_abs_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>V1_matched_filter_abs_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_matched_filter_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>V1_matched_filter_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_matched_filter_snr_angle", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>V1_matched_filter_snr_angle</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_optimal_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>V1_optimal_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("network_matched_filter_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>network_matched_filter_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("network_optimal_snr", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>network_optimal_snr</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='calibration' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>calibration</a>
+                <ul class='dropdown-menu' aria-labelledby='calibration'>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='energy' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>energy</a>
+                <ul class='dropdown-menu' aria-labelledby='energy'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("energy_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>energy_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("peak_luminosity_non_evolved", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>peak_luminosity_non_evolved</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("radiated_energy_non_evolved", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>radiated_energy_non_evolved</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='others' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>others</a>
+                <ul class='dropdown-menu' aria-labelledby='others'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("others_all", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>others_all</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_log_likelihood", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>H1_log_likelihood</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_log_likelihood", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>L1_log_likelihood</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_log_likelihood", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>V1_log_likelihood</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("log_likelihood", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>log_likelihood</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("log_prior", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>log_prior</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phase", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>phase</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_1_in_plane", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>chi_1_in_plane</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_2_in_plane", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>chi_2_in_plane</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        <li class='nav-item'>
+          <li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            Interactive
+            </a>
+            <ul class='dropdown-menu' aria-labelledby='dropdown1'>
+              <li class='dropdown-item' href='#' onclick='grab_html("Interactive_Corner", label="1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result")'><a>Interactive_Corner</a></li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+    <div class='collapse navbar-collapse' id='collapsibleNavbar'>
+      <ul class='navbar-nav flex-row ml-md-auto d-none d-md-flex'style='margin-right:1em;'>
+  <a class='nav-link' href='#', onclick='grab_html("Downloads")'>Downloads</a>
+  <a class='nav-link' href='#', onclick='grab_html("About")'>About</a>
+      </ul>
+    </div>
+    <input type='text' placeholder='search' id='search'>
+    <button type='submit' onclick='myFunction()'>Search</button>
+</nav>
+  <div class='banner'>
+1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result
+</div>
+  <div class='paragraph'>
+The figures below show the plots for 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result
+</div>
+<link rel='stylesheet' href='../css/image_styles.css'>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+  });
+</script>
+<style>
+  .popover {
+    max-width: 550px;
+    width: 550px;
+  }
+</style>
+<div class='container' style='margin-top:3em; margin-bottom:5em; background-color:#FFFFFF; box-shadow: 0 0 5px grey; max-width: 1400px'>
+  <div class='mx-auto d-block'>
+    <div class='row justify-content-center'>
+      <div class='row'>
+        <div class='column' style='padding-left: 1em;'>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='0'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_mass_1.png' alt='No image available' style='align-items:center; width:675.0px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_mass_1 onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_mass_1", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-3'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot 1d_histogram --parameter mass_1 --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-3' style='margin-left: -71.05263157894737px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the marginalized posterior distribution for mass_1 (the detector-frame (redshifted) mass of the heavier object). The vertical dashed lines show the 90% credible interval. The title gives the median and 90% confidence interval.'>Caption</button>
+          </div>
+          </div>
+          </div>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='1'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_mass_2.png' alt='No image available' style='align-items:center; width:675.0px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_mass_2 onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_mass_2", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-3'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot 1d_histgram --parameter mass_2 --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-3' style='margin-left: -71.05263157894737px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the marginalized posterior distribution for mass_2 (the detector-frame (redshifted) mass of the lighter object). The vertical dashed lines show the 90% credible interval. The title gives the median and 90% confidence interval.'>Caption</button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div class='column' style='padding-left: 1em;'>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='2'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_a_1.png' alt='No image available' style='align-items:center; width:450.0px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_a_1 onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_a_1", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-4'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot 1d_histogram --parameter a_1 --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-4' style='margin-left: -47.36842105263158px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the marginalized posterior distribution for a_1 (the dimensionless spin magnitude of the primary object). The vertical dashed lines show the 90% credible interval. The title gives the median and 90% confidence interval.'>Caption</button>
+          </div>
+          </div>
+          </div>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='3'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_a_2.png' alt='No image available' style='align-items:center; width:450.0px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_a_2 onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_a_2", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-4'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot 1d_histogram --parameter a_2 --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-4' style='margin-left: -47.36842105263158px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the marginalized posterior distribution for a_2 (the dimensionless spin magnitude of the secondary object). The vertical dashed lines show the 90% credible interval. The title gives the median and 90% confidence interval.'>Caption</button>
+          </div>
+          </div>
+          </div>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='4'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_chi_eff.png' alt='No image available' style='align-items:center; width:450.0px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_chi_eff onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_chi_eff", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-4'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot 1d_histogram --parameter chi_eff --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-4' style='margin-left: -47.36842105263158px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the marginalized posterior distribution for chi_eff (the effective inspiral spin parameter). The vertical dashed lines show the 90% credible interval. The title gives the median and 90% confidence interval.'>Caption</button>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div class='column' style='padding-left: 1em;'>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='5'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_iota.png' alt='No image available' style='align-items:center; width:337.5px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_iota onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_iota", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-5'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot 1d_histogram --parameter iota --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-5' style='margin-left: -35.526315789473685px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the marginalized posterior distribution for iota (the angle between the total orbital angular momentum, L, and the line of sight, N). The vertical dashed lines show the 90% credible interval. The title gives the median and 90% confidence interval.'>Caption</button>
+          </div>
+          </div>
+          </div>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='6'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_skymap.png' alt='No image available' style='align-items:center; width:337.5px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_skymap onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_skymap", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-5'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot skymap  --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-5' style='margin-left: -35.526315789473685px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the most likely position of the source that generated the gravitational wave. We give the 50% and 90% credible intervals. The black region corresponds to the most likely position and light orange least likely.'>Caption</button>
+          </div>
+          </div>
+          </div>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='7'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_waveform.png' alt='No image available' style='align-items:center; width:337.5px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_waveform onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_waveform", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-5'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot waveform  --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-5' style='margin-left: -35.526315789473685px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the frequency domain waveform generated from the maximum likelihood samples.'>Caption</button>
+          </div>
+          </div>
+          </div>
+          <div class='container' style='display: inline-block; width: auto; padding: 0;'>
+      <a href='#demo_7FEC4A' data-slide-to='8'>
+        <img src='../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_luminosity_distance.png' alt='No image available' style='align-items:center; width:337.5px;'id=1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_luminosity_distance onclick='modal("1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_luminosity_distance", "Modal_7FEC4A")'>
+      </a>
+      <div class='row justify-content-center'>
+      <div class='col-sm-5'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='/home/nishkal.rao/miniconda3/envs/gw_analysis/bin/summaryplots --webdir /home/nishkal.rao/git_overlap/src/output/pe_population/pe/PE_2.0_1.0_0.01/outdir/results_page/plots --samples outdir/result/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --burnin 0 --plot 1d_histogram --parameter luminosity_distance --labels 1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result'>Command Line</button>
+          </div>
+      <div class='col-sm-5' style='margin-left: -35.526315789473685px;'>
+          <button value='test' class='btn btn-info btn-xs' style='cursor: pointer' data-toggle='popover' data-placement='top' data-content='Plot showing the marginalized posterior distribution for luminosity_distance (the luminosity distance of the source). The vertical dashed lines show the 90% credible interval. The title gives the median and 90% confidence interval.'>Caption</button>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true' id='Modal_7FEC4A' style='margin-top: 200px;'>
+  <div class='modal-dialog modal-lg' style='width:90%'>
+    <div class='modal-content'>
+      <div id='demo_7FEC4A' class='carousel slide' data-ride='carousel' data-interval='false'>
+        <ul class='carousel-indicators'>
+          <li data-target='#demo_7FEC4A' data-slide-to-'0' class='active'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'0'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'1'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'2'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'3'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'4'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'5'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'6'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'7'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to-'8'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to='0' class='active'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to='1'></li>
+          <li data-target='#demo_7FEC4A' data-slide-to='2'></li>
+        </ul>
+        <div class='carousel-inner'>
+          <div class='carousel-item active'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_mass_1.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+          <div class='carousel-item'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_mass_2.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+          <div class='carousel-item'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_a_1.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+          <div class='carousel-item'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_a_2.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+          <div class='carousel-item'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_chi_eff.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+          <div class='carousel-item'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_iota.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+          <div class='carousel-item'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_skymap.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+          <div class='carousel-item'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_waveform.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+          <div class='carousel-item'>
+            <img src=../plots/1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result_1d_posterior_luminosity_distance.png style='align-items:center;' class='mx-auto d-block'>
+          </div>
+        </div>
+        <a class='carousel-control-prev' href='#demo_7FEC4A' data-slide='prev'>
+          <span class='carousel-control-prev-icon'></span>
+        </a>
+        <a class='carousel-control-next' href='#demo_7FEC4A' data-slide='next'>
+          <span class='carousel-control-next-icon'></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class='banner' style='font-size: 26px;'>
+Summary Table
+</div>
+  <div class='paragraph'>
+Table summarising the key data for each posterior distribution.
+</div>
+<div class='container' style='margin-top:3em; margin-bottom:5em; max-width:1400px'>
+    <div class='row justify-content-center'>
+<style>
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    width: 11.11111111111111%;
+    float: left;
+}
+</style>
+                  <div class='container' style='max-width:1400px'>
+                    <div class='table-responsive'>
+                        <table class='table table-hover header-fixed' style='max-width:1400px'>
+                          <thead>
+                            <tr>
+                              <th colspan='1'> </th>
+                              <th colspan='1'>5th percentile</th>
+                              <th colspan='1'>95th percentile</th>
+                              <th colspan='1'>injected</th>
+                              <th colspan='1'>maxL</th>
+                              <th colspan='1'>maxP</th>
+                              <th colspan='1'>mean</th>
+                              <th colspan='1'>median</th>
+                              <th colspan='1'>std</th>
+                            </tr>
+                          <tbody>
+                            <tr>
+                              <td>H1_log_likelihood</td>
+                              <td>2103.772</td>
+                              <td>2137.371</td>
+                              <td>nan</td>
+                              <td>2123.696</td>
+                              <td>2123.696</td>
+                              <td>2121.172</td>
+                              <td>2121.39</td>
+                              <td>10.395</td>
+                            </tr>
+                            <tr>
+                              <td>H1_matched_filter_snr</td>
+                              <td>64.87</td>
+                              <td>65.39</td>
+                              <td>nan</td>
+                              <td>65.174</td>
+                              <td>65.174</td>
+                              <td>65.139</td>
+                              <td>65.143</td>
+                              <td>0.161</td>
+                            </tr>
+                            <tr>
+                              <td>H1_optimal_snr</td>
+                              <td>63.529</td>
+                              <td>65.94</td>
+                              <td>nan</td>
+                              <td>64.731</td>
+                              <td>64.731</td>
+                              <td>64.741</td>
+                              <td>64.75</td>
+                              <td>0.745</td>
+                            </tr>
+                            <tr>
+                              <td>L1_log_likelihood</td>
+                              <td>1342.372</td>
+                              <td>1363.853</td>
+                              <td>nan</td>
+                              <td>1355.383</td>
+                              <td>1355.383</td>
+                              <td>1353.372</td>
+                              <td>1353.617</td>
+                              <td>6.545</td>
+                            </tr>
+                            <tr>
+                              <td>L1_matched_filter_snr</td>
+                              <td>52.141</td>
+                              <td>52.545</td>
+                              <td>nan</td>
+                              <td>52.372</td>
+                              <td>52.372</td>
+                              <td>52.35</td>
+                              <td>52.355</td>
+                              <td>0.123</td>
+                            </tr>
+                            <tr>
+                              <td>L1_optimal_snr</td>
+                              <td>45.638</td>
+                              <td>47.49</td>
+                              <td>nan</td>
+                              <td>46.706</td>
+                              <td>46.706</td>
+                              <td>46.57</td>
+                              <td>46.566</td>
+                              <td>0.58</td>
+                            </tr>
+                            <tr>
+                              <td>V1_log_likelihood</td>
+                              <td>481.751</td>
+                              <td>507.487</td>
+                              <td>nan</td>
+                              <td>497.572</td>
+                              <td>497.572</td>
+                              <td>494.812</td>
+                              <td>494.87</td>
+                              <td>7.847</td>
+                            </tr>
+                            <tr>
+                              <td>V1_matched_filter_snr</td>
+                              <td>31.993</td>
+                              <td>32.614</td>
+                              <td>nan</td>
+                              <td>32.374</td>
+                              <td>32.374</td>
+                              <td>32.309</td>
+                              <td>32.309</td>
+                              <td>0.192</td>
+                            </tr>
+                            <tr>
+                              <td>V1_optimal_snr</td>
+                              <td>38.892</td>
+                              <td>40.424</td>
+                              <td>nan</td>
+                              <td>39.647</td>
+                              <td>39.647</td>
+                              <td>39.659</td>
+                              <td>39.664</td>
+                              <td>0.472</td>
+                            </tr>
+                            <tr>
+                              <td>a_1</td>
+                              <td>0.902</td>
+                              <td>0.984</td>
+                              <td>nan</td>
+                              <td>0.955</td>
+                              <td>0.955</td>
+                              <td>0.946</td>
+                              <td>0.948</td>
+                              <td>0.025</td>
+                            </tr>
+                            <tr>
+                              <td>a_2</td>
+                              <td>0.978</td>
+                              <td>0.99</td>
+                              <td>nan</td>
+                              <td>0.989</td>
+                              <td>0.989</td>
+                              <td>0.986</td>
+                              <td>0.987</td>
+                              <td>0.004</td>
+                            </tr>
+                            <tr>
+                              <td>chi_1_in_plane</td>
+                              <td>0.857</td>
+                              <td>0.928</td>
+                              <td>nan</td>
+                              <td>0.907</td>
+                              <td>0.907</td>
+                              <td>0.896</td>
+                              <td>0.897</td>
+                              <td>0.022</td>
+                            </tr>
+                            <tr>
+                              <td>chi_2_in_plane</td>
+                              <td>0.116</td>
+                              <td>0.283</td>
+                              <td>nan</td>
+                              <td>0.176</td>
+                              <td>0.176</td>
+                              <td>0.198</td>
+                              <td>0.197</td>
+                              <td>0.05</td>
+                            </tr>
+                            <tr>
+                              <td>chi_eff</td>
+                              <td>0.127</td>
+                              <td>0.17</td>
+                              <td>nan</td>
+                              <td>0.154</td>
+                              <td>0.154</td>
+                              <td>0.147</td>
+                              <td>0.147</td>
+                              <td>0.012</td>
+                            </tr>
+                            <tr>
+                              <td>chi_p</td>
+                              <td>0.857</td>
+                              <td>0.928</td>
+                              <td>nan</td>
+                              <td>0.907</td>
+                              <td>0.907</td>
+                              <td>0.896</td>
+                              <td>0.897</td>
+                              <td>0.022</td>
+                            </tr>
+                            <tr>
+                              <td>chirp_mass</td>
+                              <td>31.037</td>
+                              <td>31.574</td>
+                              <td>nan</td>
+                              <td>31.369</td>
+                              <td>31.369</td>
+                              <td>31.284</td>
+                              <td>31.279</td>
+                              <td>0.157</td>
+                            </tr>
+                            <tr>
+                              <td>chirp_mass_source</td>
+                              <td>29.836</td>
+                              <td>30.351</td>
+                              <td>nan</td>
+                              <td>30.144</td>
+                              <td>30.144</td>
+                              <td>30.073</td>
+                              <td>30.067</td>
+                              <td>0.151</td>
+                            </tr>
+                            <tr>
+                              <td>comoving_distance</td>
+                              <td>171.468</td>
+                              <td>181.915</td>
+                              <td>nan</td>
+                              <td>178.062</td>
+                              <td>178.062</td>
+                              <td>176.652</td>
+                              <td>176.588</td>
+                              <td>3.199</td>
+                            </tr>
+                            <tr>
+                              <td>cos_tilt_1</td>
+                              <td>-0.352</td>
+                              <td>-0.288</td>
+                              <td>nan</td>
+                              <td>-0.313</td>
+                              <td>-0.313</td>
+                              <td>-0.322</td>
+                              <td>-0.322</td>
+                              <td>0.02</td>
+                            </tr>
+                            <tr>
+                              <td>cos_tilt_2</td>
+                              <td>0.958</td>
+                              <td>0.993</td>
+                              <td>nan</td>
+                              <td>0.984</td>
+                              <td>0.984</td>
+                              <td>0.978</td>
+                              <td>0.98</td>
+                              <td>0.011</td>
+                            </tr>
+                            <tr>
+                              <td>dec</td>
+                              <td>-1.245</td>
+                              <td>-1.228</td>
+                              <td>nan</td>
+                              <td>-1.236</td>
+                              <td>-1.236</td>
+                              <td>-1.236</td>
+                              <td>-1.236</td>
+                              <td>0.005</td>
+                            </tr>
+                            <tr>
+                              <td>geocent_time</td>
+                              <td>1126259462.413</td>
+                              <td>1126259462.414</td>
+                              <td>nan</td>
+                              <td>1126259462.414</td>
+                              <td>1126259462.414</td>
+                              <td>1126259462.413</td>
+                              <td>1126259462.413</td>
+                              <td>0.0</td>
+                            </tr>
+                            <tr>
+                              <td>iota</td>
+                              <td>1.263</td>
+                              <td>1.367</td>
+                              <td>nan</td>
+                              <td>1.306</td>
+                              <td>1.306</td>
+                              <td>1.316</td>
+                              <td>1.316</td>
+                              <td>0.033</td>
+                            </tr>
+                            <tr>
+                              <td>log_likelihood</td>
+                              <td>3964.165</td>
+                              <td>3973.382</td>
+                              <td>nan</td>
+                              <td>3976.679</td>
+                              <td>3976.679</td>
+                              <td>3969.357</td>
+                              <td>3969.663</td>
+                              <td>2.84</td>
+                            </tr>
+                            <tr>
+                              <td>log_prior</td>
+                              <td>-29.78</td>
+                              <td>-28.862</td>
+                              <td>nan</td>
+                              <td>-29.331</td>
+                              <td>-29.331</td>
+                              <td>-29.27</td>
+                              <td>-29.238</td>
+                              <td>0.284</td>
+                            </tr>
+                            <tr>
+                              <td>luminosity_distance</td>
+                              <td>178.172</td>
+                              <td>189.466</td>
+                              <td>nan</td>
+                              <td>185.295</td>
+                              <td>185.295</td>
+                              <td>183.772</td>
+                              <td>183.701</td>
+                              <td>3.459</td>
+                            </tr>
+                            <tr>
+                              <td>mass_1</td>
+                              <td>47.847</td>
+                              <td>49.808</td>
+                              <td>nan</td>
+                              <td>48.888</td>
+                              <td>48.888</td>
+                              <td>48.793</td>
+                              <td>48.771</td>
+                              <td>0.597</td>
+                            </tr>
+                            <tr>
+                              <td>mass_1_source</td>
+                              <td>46.003</td>
+                              <td>47.873</td>
+                              <td>nan</td>
+                              <td>46.98</td>
+                              <td>46.98</td>
+                              <td>46.903</td>
+                              <td>46.884</td>
+                              <td>0.569</td>
+                            </tr>
+                            <tr>
+                              <td>mass_2</td>
+                              <td>26.313</td>
+                              <td>27.545</td>
+                              <td>nan</td>
+                              <td>27.022</td>
+                              <td>27.022</td>
+                              <td>26.937</td>
+                              <td>26.939</td>
+                              <td>0.374</td>
+                            </tr>
+                            <tr>
+                              <td>mass_2_source</td>
+                              <td>25.289</td>
+                              <td>26.486</td>
+                              <td>nan</td>
+                              <td>25.967</td>
+                              <td>25.967</td>
+                              <td>25.893</td>
+                              <td>25.895</td>
+                              <td>0.362</td>
+                            </tr>
+                            <tr>
+                              <td>mass_ratio</td>
+                              <td>0.53</td>
+                              <td>0.574</td>
+                              <td>nan</td>
+                              <td>0.553</td>
+                              <td>0.553</td>
+                              <td>0.552</td>
+                              <td>0.552</td>
+                              <td>0.013</td>
+                            </tr>
+                            <tr>
+                              <td>phase</td>
+                              <td>1.026</td>
+                              <td>1.177</td>
+                              <td>nan</td>
+                              <td>1.109</td>
+                              <td>1.109</td>
+                              <td>1.099</td>
+                              <td>1.098</td>
+                              <td>0.046</td>
+                            </tr>
+                            <tr>
+                              <td>phi_1</td>
+                              <td>2.05</td>
+                              <td>2.232</td>
+                              <td>nan</td>
+                              <td>2.139</td>
+                              <td>2.139</td>
+                              <td>2.144</td>
+                              <td>2.144</td>
+                              <td>0.077</td>
+                            </tr>
+                            <tr>
+                              <td>phi_12</td>
+                              <td>0.074</td>
+                              <td>6.187</td>
+                              <td>nan</td>
+                              <td>0.375</td>
+                              <td>0.375</td>
+                              <td>1.447</td>
+                              <td>0.542</td>
+                              <td>2.127</td>
+                            </tr>
+                            <tr>
+                              <td>phi_2</td>
+                              <td>1.902</td>
+                              <td>3.055</td>
+                              <td>nan</td>
+                              <td>2.514</td>
+                              <td>2.514</td>
+                              <td>2.503</td>
+                              <td>2.517</td>
+                              <td>0.359</td>
+                            </tr>
+                            <tr>
+                              <td>phi_jl</td>
+                              <td>0.138</td>
+                              <td>0.297</td>
+                              <td>nan</td>
+                              <td>0.223</td>
+                              <td>0.223</td>
+                              <td>0.216</td>
+                              <td>0.213</td>
+                              <td>0.073</td>
+                            </tr>
+                            <tr>
+                              <td>psi</td>
+                              <td>2.555</td>
+                              <td>2.633</td>
+                              <td>nan</td>
+                              <td>2.598</td>
+                              <td>2.598</td>
+                              <td>2.594</td>
+                              <td>2.595</td>
+                              <td>0.024</td>
+                            </tr>
+                            <tr>
+                              <td>ra</td>
+                              <td>1.485</td>
+                              <td>1.499</td>
+                              <td>nan</td>
+                              <td>1.493</td>
+                              <td>1.493</td>
+                              <td>1.492</td>
+                              <td>1.492</td>
+                              <td>0.004</td>
+                            </tr>
+                            <tr>
+                              <td>redshift</td>
+                              <td>0.039</td>
+                              <td>0.042</td>
+                              <td>nan</td>
+                              <td>0.041</td>
+                              <td>0.041</td>
+                              <td>0.04</td>
+                              <td>0.04</td>
+                              <td>0.001</td>
+                            </tr>
+                            <tr>
+                              <td>spin_1x</td>
+                              <td>-0.545</td>
+                              <td>-0.417</td>
+                              <td>nan</td>
+                              <td>-0.488</td>
+                              <td>-0.488</td>
+                              <td>-0.483</td>
+                              <td>-0.485</td>
+                              <td>0.042</td>
+                            </tr>
+                            <tr>
+                              <td>spin_1y</td>
+                              <td>0.688</td>
+                              <td>0.813</td>
+                              <td>nan</td>
+                              <td>0.765</td>
+                              <td>0.765</td>
+                              <td>0.752</td>
+                              <td>0.753</td>
+                              <td>0.045</td>
+                            </tr>
+                            <tr>
+                              <td>spin_1z</td>
+                              <td>-0.341</td>
+                              <td>-0.265</td>
+                              <td>nan</td>
+                              <td>-0.299</td>
+                              <td>-0.299</td>
+                              <td>-0.304</td>
+                              <td>-0.306</td>
+                              <td>0.023</td>
+                            </tr>
+                            <tr>
+                              <td>spin_2x</td>
+                              <td>-0.246</td>
+                              <td>-0.049</td>
+                              <td>nan</td>
+                              <td>-0.143</td>
+                              <td>-0.143</td>
+                              <td>-0.15</td>
+                              <td>-0.151</td>
+                              <td>0.06</td>
+                            </tr>
+                            <tr>
+                              <td>spin_2y</td>
+                              <td>0.016</td>
+                              <td>0.208</td>
+                              <td>nan</td>
+                              <td>0.104</td>
+                              <td>0.104</td>
+                              <td>0.11</td>
+                              <td>0.109</td>
+                              <td>0.058</td>
+                            </tr>
+                            <tr>
+                              <td>spin_2z</td>
+                              <td>0.944</td>
+                              <td>0.98</td>
+                              <td>nan</td>
+                              <td>0.974</td>
+                              <td>0.974</td>
+                              <td>0.965</td>
+                              <td>0.966</td>
+                              <td>0.011</td>
+                            </tr>
+                            <tr>
+                              <td>symmetric_mass_ratio</td>
+                              <td>0.226</td>
+                              <td>0.232</td>
+                              <td>nan</td>
+                              <td>0.229</td>
+                              <td>0.229</td>
+                              <td>0.229</td>
+                              <td>0.229</td>
+                              <td>0.002</td>
+                            </tr>
+                            <tr>
+                              <td>theta_jn</td>
+                              <td>1.359</td>
+                              <td>1.413</td>
+                              <td>nan</td>
+                              <td>1.38</td>
+                              <td>1.38</td>
+                              <td>1.386</td>
+                              <td>1.386</td>
+                              <td>0.018</td>
+                            </tr>
+                            <tr>
+                              <td>tilt_1</td>
+                              <td>1.863</td>
+                              <td>1.931</td>
+                              <td>nan</td>
+                              <td>1.889</td>
+                              <td>1.889</td>
+                              <td>1.898</td>
+                              <td>1.899</td>
+                              <td>0.021</td>
+                            </tr>
+                            <tr>
+                              <td>tilt_2</td>
+                              <td>0.118</td>
+                              <td>0.291</td>
+                              <td>nan</td>
+                              <td>0.179</td>
+                              <td>0.179</td>
+                              <td>0.202</td>
+                              <td>0.201</td>
+                              <td>0.052</td>
+                            </tr>
+                            <tr>
+                              <td>total_mass</td>
+                              <td>75.091</td>
+                              <td>76.437</td>
+                              <td>nan</td>
+                              <td>75.91</td>
+                              <td>75.91</td>
+                              <td>75.729</td>
+                              <td>75.709</td>
+                              <td>0.411</td>
+                            </tr>
+                            <tr>
+                              <td>total_mass_source</td>
+                              <td>72.186</td>
+                              <td>73.464</td>
+                              <td>nan</td>
+                              <td>72.947</td>
+                              <td>72.947</td>
+                              <td>72.796</td>
+                              <td>72.776</td>
+                              <td>0.39</td>
+                            </tr>
+                            <tr>
+                              <td>H1_matched_filter_abs_snr</td>
+                              <td>64.965</td>
+                              <td>65.475</td>
+                              <td>nan</td>
+                              <td>65.259</td>
+                              <td>65.259</td>
+                              <td>65.23</td>
+                              <td>65.234</td>
+                              <td>0.157</td>
+                            </tr>
+                            <tr>
+                              <td>H1_matched_filter_snr_angle</td>
+                              <td>-0.074</td>
+                              <td>-0.027</td>
+                              <td>nan</td>
+                              <td>-0.051</td>
+                              <td>-0.051</td>
+                              <td>-0.051</td>
+                              <td>-0.051</td>
+                              <td>0.014</td>
+                            </tr>
+                            <tr>
+                              <td>L1_matched_filter_abs_snr</td>
+                              <td>52.564</td>
+                              <td>52.93</td>
+                              <td>nan</td>
+                              <td>52.788</td>
+                              <td>52.788</td>
+                              <td>52.755</td>
+                              <td>52.76</td>
+                              <td>0.115</td>
+                            </tr>
+                            <tr>
+                              <td>L1_matched_filter_snr_angle</td>
+                              <td>0.093</td>
+                              <td>0.152</td>
+                              <td>nan</td>
+                              <td>0.126</td>
+                              <td>0.126</td>
+                              <td>0.123</td>
+                              <td>0.122</td>
+                              <td>0.018</td>
+                            </tr>
+                            <tr>
+                              <td>V1_matched_filter_abs_snr</td>
+                              <td>32.007</td>
+                              <td>32.625</td>
+                              <td>nan</td>
+                              <td>32.377</td>
+                              <td>32.377</td>
+                              <td>32.32</td>
+                              <td>32.319</td>
+                              <td>0.19</td>
+                            </tr>
+                            <tr>
+                              <td>V1_matched_filter_snr_angle</td>
+                              <td>-0.048</td>
+                              <td>0.036</td>
+                              <td>nan</td>
+                              <td>-0.015</td>
+                              <td>-0.015</td>
+                              <td>-0.005</td>
+                              <td>-0.005</td>
+                              <td>0.026</td>
+                            </tr>
+                            <tr>
+                              <td>inverted_mass_ratio</td>
+                              <td>1.743</td>
+                              <td>1.888</td>
+                              <td>nan</td>
+                              <td>1.809</td>
+                              <td>1.809</td>
+                              <td>1.812</td>
+                              <td>1.811</td>
+                              <td>0.044</td>
+                            </tr>
+                            <tr>
+                              <td>chi_p_2spin</td>
+                              <td>0.86</td>
+                              <td>0.925</td>
+                              <td>nan</td>
+                              <td>0.908</td>
+                              <td>0.908</td>
+                              <td>0.894</td>
+                              <td>0.896</td>
+                              <td>0.02</td>
+                            </tr>
+                            <tr>
+                              <td>beta</td>
+                              <td>0.396</td>
+                              <td>0.429</td>
+                              <td>nan</td>
+                              <td>0.415</td>
+                              <td>0.415</td>
+                              <td>0.413</td>
+                              <td>0.414</td>
+                              <td>0.01</td>
+                            </tr>
+                            <tr>
+                              <td>psi_J</td>
+                              <td>3.72</td>
+                              <td>3.776</td>
+                              <td>nan</td>
+                              <td>3.749</td>
+                              <td>3.749</td>
+                              <td>3.748</td>
+                              <td>3.748</td>
+                              <td>0.021</td>
+                            </tr>
+                            <tr>
+                              <td>final_spin_non_evolved</td>
+                              <td>0.721</td>
+                              <td>0.737</td>
+                              <td>nan</td>
+                              <td>0.733</td>
+                              <td>0.733</td>
+                              <td>0.729</td>
+                              <td>0.729</td>
+                              <td>0.005</td>
+                            </tr>
+                            <tr>
+                              <td>peak_luminosity_non_evolved</td>
+                              <td>2.891</td>
+                              <td>3.075</td>
+                              <td>nan</td>
+                              <td>2.997</td>
+                              <td>2.997</td>
+                              <td>2.984</td>
+                              <td>2.984</td>
+                              <td>0.056</td>
+                            </tr>
+                            <tr>
+                              <td>final_mass_non_evolved</td>
+                              <td>71.946</td>
+                              <td>73.242</td>
+                              <td>nan</td>
+                              <td>72.724</td>
+                              <td>72.724</td>
+                              <td>72.565</td>
+                              <td>72.544</td>
+                              <td>0.398</td>
+                            </tr>
+                            <tr>
+                              <td>final_mass_source_non_evolved</td>
+                              <td>69.169</td>
+                              <td>70.399</td>
+                              <td>nan</td>
+                              <td>69.885</td>
+                              <td>69.885</td>
+                              <td>69.754</td>
+                              <td>69.735</td>
+                              <td>0.377</td>
+                            </tr>
+                            <tr>
+                              <td>radiated_energy_non_evolved</td>
+                              <td>2.964</td>
+                              <td>3.128</td>
+                              <td>nan</td>
+                              <td>3.062</td>
+                              <td>3.062</td>
+                              <td>3.042</td>
+                              <td>3.04</td>
+                              <td>0.05</td>
+                            </tr>
+                            <tr>
+                              <td>H1_time</td>
+                              <td>1126259462.426</td>
+                              <td>1126259462.426</td>
+                              <td>nan</td>
+                              <td>1126259462.426</td>
+                              <td>1126259462.426</td>
+                              <td>1126259462.426</td>
+                              <td>1126259462.426</td>
+                              <td>0.0</td>
+                            </tr>
+                            <tr>
+                              <td>L1_time</td>
+                              <td>1126259462.419</td>
+                              <td>1126259462.419</td>
+                              <td>nan</td>
+                              <td>1126259462.419</td>
+                              <td>1126259462.419</td>
+                              <td>1126259462.419</td>
+                              <td>1126259462.419</td>
+                              <td>0.0</td>
+                            </tr>
+                            <tr>
+                              <td>V1_time</td>
+                              <td>1126259462.425</td>
+                              <td>1126259462.425</td>
+                              <td>nan</td>
+                              <td>1126259462.425</td>
+                              <td>1126259462.425</td>
+                              <td>1126259462.425</td>
+                              <td>1126259462.425</td>
+                              <td>0.0</td>
+                            </tr>
+                            <tr>
+                              <td>network_optimal_snr</td>
+                              <td>87.43</td>
+                              <td>90.701</td>
+                              <td>nan</td>
+                              <td>89.126</td>
+                              <td>89.126</td>
+                              <td>89.068</td>
+                              <td>89.072</td>
+                              <td>1.0</td>
+                            </tr>
+                            <tr>
+                              <td>network_matched_filter_snr</td>
+                              <td>89.049</td>
+                              <td>89.149</td>
+                              <td>nan</td>
+                              <td>89.181</td>
+                              <td>89.181</td>
+                              <td>89.105</td>
+                              <td>89.109</td>
+                              <td>0.031</td>
+                            </tr>
+                            <tr>
+                              <td>cos_theta_jn</td>
+                              <td>0.157</td>
+                              <td>0.21</td>
+                              <td>nan</td>
+                              <td>0.19</td>
+                              <td>0.19</td>
+                              <td>0.184</td>
+                              <td>0.184</td>
+                              <td>0.018</td>
+                            </tr>
+                            <tr>
+                              <td>viewing_angle</td>
+                              <td>1.359</td>
+                              <td>1.413</td>
+                              <td>nan</td>
+                              <td>1.38</td>
+                              <td>1.38</td>
+                              <td>1.386</td>
+                              <td>1.386</td>
+                              <td>0.016</td>
+                            </tr>
+                            <tr>
+                              <td>cos_iota</td>
+                              <td>0.202</td>
+                              <td>0.303</td>
+                              <td>nan</td>
+                              <td>0.261</td>
+                              <td>0.261</td>
+                              <td>0.252</td>
+                              <td>0.252</td>
+                              <td>0.032</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                  </div>
+    </div>
+</div>
+<div class='container' style='margin-top:-4em; margin-bottom:5em; max-width: 1400px'>
+<button type='button' onclick='export_table_to_csv("summary_information_1709835860_PE_data0_1126259462-4702857_analysis_H1L1V1_merge_result.csv")' class='btn btn-outline-secondary btn-table'>Export to CSV</button>
+</div>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
+<div class='jumbotron' style='margin-bottom:0; line-height: 0.5;background-color:#989898; bottom:0; position:bottom;width:100%'>
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-4 icon-bar'>
+      <div class='icon'>
+<a href='https://git.ligo.org/lscsoft/pesummary/tree/v0.13.10' data-toggle='tooltip' title='View PESummary-v0.13.10'><i class='fa fa-code' style='font-size: 30px; color: #E8E8E8; font-weight: 900; padding-right:10px'></i></a>
+<a href='https://git.ligo.org/lscsoft/pesummary/issues' data-toggle='tooltip' title='Open an issue ticket'><i class='fa fa-ticket' style='font-size: 30px; color: #E8E8E8; font-weight: 900; padding-right:10px'></i></a>
+<a href='https://lscsoft.docs.ligo.org/pesummary/' data-toggle='tooltip' title='View the docs!'><i class='fa fa-book' style='font-size: 30px; color: #E8E8E8; font-weight: 900; padding-right:10px'></i></a>
+<a href='https://lscsoft.docs.ligo.org/pesummary/stable_docs/tutorials/make_your_own_page_from_metafile.html' data-toggle='tooltip' title='Make your own page'><i class='fa fa-window-restore' style='font-size: 30px; color: #E8E8E8; font-weight: 900; padding-right:10px'></i></a>
+      </div>
+    </div>
+    <div class='col-sm-7'>
+<p style='color: #E8E8E8; font-weight: bold; font-family: arial-body; margin-top:14px'>This page was produced by nishkal.rao at 23:57 on March 07 2024</p>
+    </div>
+  </div>
+</div>
+</div>

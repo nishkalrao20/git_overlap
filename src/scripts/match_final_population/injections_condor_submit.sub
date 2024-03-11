@@ -1,0 +1,13 @@
+universe = vanilla
+executable = /home/nishkal.rao/git_overlap/src/scripts/match_final_population/gw_injections.py
+accounting_group = ligo.sim.o3.cbc.pe.bilby
+accounting_group_user = nishkal.rao
+initialdir = /home/nishkal.rao/git_overlap/src/scripts/match_final_population/
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+getenv = True 
+arguments = $(ProcId)
+log = /home/nishkal.rao/git_overlap/src/output/match_final_population/condor/$(Process).log
+output = /home/nishkal.rao/git_overlap/src/output/match_final_population/condor/$(Process).out
+error = /home/nishkal.rao/git_overlap/src/output/match_final_population/condor/$(Process).err
+Queue 1000

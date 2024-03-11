@@ -1,0 +1,16 @@
+universe = vanilla
+executable = /home/nishkal.rao/miniconda3/envs/igwn_py39-20230425/bin/bilby_result
+request_memory = 4 GB
+request_disk = 5GB
+request_cpus = 1
+getenv = True
+initialdir = /home/nishkal.rao/git_overlap/src/output/pe/bilby_pipe
+notification = Never
+requirements = 
+log = singles_a/log_data_analysis/singles_a_data0_1126259462-4116447_analysis_H1L1V1_merge_final_result.log
+output = singles_a/log_data_analysis/singles_a_data0_1126259462-4116447_analysis_H1L1V1_merge_final_result.out
+error = singles_a/log_data_analysis/singles_a_data0_1126259462-4116447_analysis_H1L1V1_merge_final_result.err
+accounting_group = ligo.dev.o4.cbc.pe.lalinference
+priority = 0
+arguments = $(ARGS)
+queue

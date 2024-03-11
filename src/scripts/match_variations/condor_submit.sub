@@ -1,0 +1,13 @@
+universe = vanilla
+executable = /home/nishkal.rao/git_overlap/src/scripts/match_variations/pairs_match_ml(4D)_mchirp_time_snr.py
+accounting_group = ligo.sim.o3.cbc.pe.bilby
+accounting_group_user = nishkal.rao
+initialdir = /home/nishkal.rao/git_overlap/src/scripts/match_variations/
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+getenv = True
+arguments = $(ProcId)
+log = /home/nishkal.rao/git_overlap/src/output/match_variations/match_ml_mchirp_time_snr/condor/$(Process).log
+output = /home/nishkal.rao/git_overlap/src/output/match_variations/match_ml_mchirp_time_snr/condor/$(Process).out
+error = /home/nishkal.rao/git_overlap/src/output/match_variations/match_ml_mchirp_time_snr/condor/$(Process).err
+Queue 125

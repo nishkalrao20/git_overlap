@@ -1,0 +1,12 @@
+Universe = vanilla
+accounting_group = ligo.sim.o3.cbc.pe.bilby
+accounting_group_user = nishkal.rao
+Executable = /home/nishkal.rao/git_overlap/src/scripts/match_ecc/pairs_ecc(3D).py
+initialdir = /home/nishkal.rao/git_overlap/src/scripts/match_ecc/
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+getenv = True
+Log = /home/nishkal.rao/git_overlap/src/output/match_population/match_ecc/condor/log/$(Process).log
+Output = /home/nishkal.rao/git_overlap/src/output/match_population/match_ecc/out/condor/$(Process).out
+Error = /home/nishkal.rao/git_overlap/src/output/match_population/match_ecc/err/condor/$(Process).err
+Queue 1

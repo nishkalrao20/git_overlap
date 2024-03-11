@@ -1,0 +1,15 @@
+*.png
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.json
+*.txt
+*.log
+*.err
+*.out
+*.dat
+*.pdf
+*.version
+*.ipynb_checkpoints
+.obsidian

@@ -1,0 +1,16 @@
+universe = vanilla
+executable = /home/nishkal.rao/miniconda3/envs/igwn_py39-20230425/bin/summarypages
+request_memory = 16 GB
+request_disk = 5GB
+request_cpus = 1
+getenv = True
+initialdir = /home/nishkal.rao/git_overlap/src/output/match_arxiv/match_arxiv_2103.16225/match_time_phase
+notification = Never
+requirements = 
+log = time_phase_4/log_results_page/time_phase_pesummary.log
+output = time_phase_4/log_results_page/time_phase_pesummary.out
+error = time_phase_4/log_results_page/time_phase_pesummary.err
+accounting_group = ligo.dev.o4.cbc.pe.lalinference
+priority = 0
+arguments = $(ARGS)
+queue

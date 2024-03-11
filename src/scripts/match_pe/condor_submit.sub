@@ -1,0 +1,12 @@
+universe = vanilla
+executable = /home/nishkal.rao/git_overlap/src/scripts/match_pe/ecc_run.sh
+accounting_group = ligo.sim.o3.cbc.pe.bilby
+accounting_group_user = nishkal.rao
+initialdir = /home/nishkal.rao/git_overlap/src/scripts/match_pe/
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+getenv = True
+log = /home/nishkal.rao/git_overlap/src/output/match_pe/condor/$(Process).log
+output = /home/nishkal.rao/git_overlap/src/output/match_pe/condor/$(Process).out
+error = /home/nishkal.rao/git_overlap/src/output/match_pe/condor/$(Process).err
+Queue 1

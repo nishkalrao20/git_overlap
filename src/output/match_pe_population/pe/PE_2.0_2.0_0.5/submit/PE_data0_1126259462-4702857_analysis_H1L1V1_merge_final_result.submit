@@ -1,0 +1,16 @@
+universe = vanilla
+executable = /home/nishkal.rao/miniconda3/envs/gw_analysis/bin/bilby_result
+request_memory = 4 GB
+request_disk = 5.0GB
+request_cpus = 1
+getenv = True
+initialdir = /home/nishkal.rao
+notification = Never
+requirements = 
+log = git_overlap/src/output/pe_population/pe/PE_2.0_2.0_0.5/log_data_analysis/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_final_result.log
+output = git_overlap/src/output/pe_population/pe/PE_2.0_2.0_0.5/log_data_analysis/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_final_result.out
+error = git_overlap/src/output/pe_population/pe/PE_2.0_2.0_0.5/log_data_analysis/PE_data0_1126259462-4702857_analysis_H1L1V1_merge_final_result.err
+accounting_group = ligo.dev.o4.cbc.pe.lalinference
+priority = 0
+arguments = $(ARGS)
+queue

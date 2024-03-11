@@ -1,0 +1,24 @@
+JOB pairs_data0_1126259462-4702857_generation_arg_0 pe/submit/pairs_data0_1126259462-4702857_generation.submit
+VARS pairs_data0_1126259462-4702857_generation_arg_0 ARGS="pe/pairs_config_complete.ini --submit --label pairs_data0_1126259462-4702857_generation --idx 0 --trigger-time 1126259462.4702857"
+JOB pairs_data0_1126259462-4702857_analysis_H1L1V1_par0_arg_0 pe/submit/pairs_data0_1126259462-4702857_analysis_H1L1V1_par0.submit
+VARS pairs_data0_1126259462-4702857_analysis_H1L1V1_par0_arg_0 ARGS="pe/pairs_config_complete.ini --submit --outdir pe --detectors H1 --detectors L1 --detectors V1 --label pairs_data0_1126259462-4702857_analysis_H1L1V1_par0 --data-dump-file pe/data/pairs_data0_1126259462-4702857_generation_data_dump.pickle --sampler dynesty"
+Retry pairs_data0_1126259462-4702857_analysis_H1L1V1_par0_arg_0 3
+JOB pairs_data0_1126259462-4702857_analysis_H1L1V1_par1_arg_0 pe/submit/pairs_data0_1126259462-4702857_analysis_H1L1V1_par1.submit
+VARS pairs_data0_1126259462-4702857_analysis_H1L1V1_par1_arg_0 ARGS="pe/pairs_config_complete.ini --submit --outdir pe --detectors H1 --detectors L1 --detectors V1 --label pairs_data0_1126259462-4702857_analysis_H1L1V1_par1 --data-dump-file pe/data/pairs_data0_1126259462-4702857_generation_data_dump.pickle --sampler dynesty"
+Retry pairs_data0_1126259462-4702857_analysis_H1L1V1_par1_arg_0 3
+JOB pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_arg_0 pe/submit/pairs_data0_1126259462-4702857_analysis_H1L1V1_merge.submit
+VARS pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_arg_0 ARGS="--result pe/result/pairs_data0_1126259462-4702857_analysis_H1L1V1_par0_result.hdf5 pe/result/pairs_data0_1126259462-4702857_analysis_H1L1V1_par1_result.hdf5 --outdir pe/result --label pairs_data0_1126259462-4702857_analysis_H1L1V1_merge --extension hdf5 --merge"
+JOB pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_final_result_arg_0 pe/submit/pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_final_result.submit
+VARS pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_final_result_arg_0 ARGS="--result pe/result/pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --outdir pe/final_result --extension hdf5 --max-samples 20000 --lightweight --save"
+JOB pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_plot_arg_0 pe/submit/pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_plot.submit
+VARS pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_plot_arg_0 ARGS="--result pe/result/pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 --outdir pe/result --calibration --corner --marginal --skymap --waveform --format png"
+JOB pairs_pesummary_arg_0 pe/submit/pairs_pesummary.submit
+VARS pairs_pesummary_arg_0 ARGS="--webdir pe/results_page --config pe/pairs_config_complete.ini --samples pe/result/pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_result.hdf5 -a IMRPhenomXPHM --gwdata pe/data/pairs_data0_1126259462-4702857_generation_data_dump.pickle"
+
+#Inter-job dependencies
+Parent pairs_data0_1126259462-4702857_generation_arg_0 Child pairs_data0_1126259462-4702857_analysis_H1L1V1_par0_arg_0
+Parent pairs_data0_1126259462-4702857_generation_arg_0 Child pairs_data0_1126259462-4702857_analysis_H1L1V1_par1_arg_0
+Parent pairs_data0_1126259462-4702857_analysis_H1L1V1_par0_arg_0 pairs_data0_1126259462-4702857_analysis_H1L1V1_par1_arg_0 Child pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_arg_0
+Parent pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_arg_0 Child pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_final_result_arg_0
+Parent pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_arg_0 Child pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_plot_arg_0
+Parent pairs_data0_1126259462-4702857_analysis_H1L1V1_merge_arg_0 Child pairs_pesummary_arg_0
