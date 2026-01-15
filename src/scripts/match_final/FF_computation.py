@@ -1,23 +1,20 @@
-import numpy as np
+import waveforms
 
 import pycbc
-
-import lal
-import lalsimulation
+import pycbc.waveform 
+import pycbc.filter
+import pycbc.psd
 
 import numpy as np
 import scipy as sp
-from scipy.optimize import minimize
+from scipy.optimize import minimize, differential_evolution
 from scipy.interpolate import interp1d
 
 import random
 from copy import deepcopy
 
-import sys
-sys.path.append("/home/nishkal.rao/GWMAT/pnt_Ff_lookup_table/src/cythonized_pnt_lens_class")   
-import cythonized_pnt_lens_class as pnt_lens_cy 
-sys.path.append('/home/nishkal.rao/gweat/src/')
-import TEOBResumS_utils as ecc_gen
+import gwmat.cythonized_point_lens as pnt_lens_cy
+import gweat.teobresums.utils as ecc_gen
 
 # constants
 G = 6.67430*1e-11 
@@ -140,7 +137,7 @@ class CBC_parms_domain:
         """        
 
         if x2 == None: #i.e., x2 can be unbounded
-            x2 = 1e4   #assign a big number (but not np.inf as it will bias the algebra)
+            x2 = 1e4   #assign a big number
         period = 2*(x2 - x1)
         x_frac = (x - x1) % period
         if x_frac <= period/2:
@@ -149,8 +146,6 @@ class CBC_parms_domain:
             x_ref = (period - x_frac) + x1 
         return x_ref
 
-    # function to wrap a real number periodically around the points x1 and x2. 
-    # Ex- for a sine func, we will have 'periodic(2*np.pi + x, 0, 2*np.pi) = x'.
     def wrap_periodic(self, x, x1, x2):
         """
         Function to wrap a real number periodically around the points x1 and x2. 
@@ -177,7 +172,6 @@ class CBC_parms_domain:
         x_p = x_frac + x1  
         return x_p
 
-    # wraps x between (x1, x2) assuming boundaries to be either periodic or reflective.
     def wrap(self, x, x1, x2, boundary='reflective'):
         """
         Function to wrap a real number around the points x1 and x2 either periodically or reflectively. 
@@ -297,7 +291,7 @@ class CBC_parms_domain:
         m_ref = self.wrap(x, m_min, m_max, boundary='reflective')
         return m_ref     
 
-    def dom_chirp(self, x, cm_min=3.05, cm_max=None):   # because chirp(3.5, 3.5) ~ 3.05
+    def dom_chirp(self, x, cm_min=3.05, cm_max=None):
         """
         Returns wrapped Chirp Mass value(s): wrapping and reflection of real line around (3, 1e4), 
         where 1e4 is a large enough number so that `CM > 3` is the only real restriction.
@@ -321,7 +315,6 @@ class CBC_parms_domain:
         cm_ref = self.wrap(x, cm_min, cm_max, boundary='reflective')
         return cm_ref   
 
-    # domain of Mass Ratio values: wrapping and reflection of real line around (~0, 1).
     def dom_q(self, x, q_min=1/18., q_max=1):
         """
         Returns wrapped mass ratio value(s): wrapping and reflection of real line around (~0, 1),
@@ -346,7 +339,6 @@ class CBC_parms_domain:
         x_wrap = self.wrap(x, q_min, q_max, boundary='reflective')
         return x_wrap
 
-    # domain of Symmetric Mass Ratio values: wrapping and reflection of real line around (~0, 1/4).
     def dom_eta(self, x, eta_min=0.05, eta_max=1/4.):
         """
         Returns wrapped symmetric mass ratio value(s): wrapping and reflection of real line around (~0, 1/4.).
@@ -653,7 +645,7 @@ class FF_4D_aligned_spin(FF_2D_zero_spin):
 
         x[0], x[1] = self.dom_chirp(x[0]), self.dom_q(x[1])
         m1, m2 = mchirp_q_to_m1m2(x[0], x[1])
-        if (m1 < 3.5 or m2 < 3.5):  # if mchirp and q doesn't lead to reasonable binary masses, they will be avoided
+        if (m1 < 3.5 or m2 < 3.5):
             return 1e4
 
         x[2], x[3] = self.dom_sp(x[2]), self.dom_sp(x[3])
@@ -673,30 +665,32 @@ class FF_4D_aligned_spin(FF_2D_zero_spin):
 ############################################################################################################################################################################
 ############################################################################################################################################################################
 
-class FF_EC_3D_zero_spin(FF_2D_zero_spin):
+class FF_EC_4D_zero_spin(FF_2D_zero_spin):
     """
-    Functions for `wf_model` == 'EC_3D'.
+    Functions for `wf_model` == 'EC_4D'.
 
     """
     
-    def gen_seed_prm_EC_3D(self, chirp_mass=25, q=1, ecc=0.1, ecc_min=1e-3, ecc_max=.5, sigma_mchirp=0.5, sigma_q=0.2, sigma_ecc=0.5):
+    def gen_seed_prm_EC_4D(self, chirp_mass=25, q=1, ecc=0.1, ecc_min=1e-3, ecc_max=.6, phi_min=0, phi_max=2*np.pi, sigma_mchirp=0.5, sigma_q=0.2):
         """
-        Generates seed point in 3D [m1, m2, e] for match maximisation; uses reasonable initial bounds.
+        Generates seed point in 4D [m1, m2, e, phi] for match maximisation; uses reasonable initial bounds.
 
         """ 
 
         mchirp = np.random.normal(chirp_mass, sigma_mchirp, 1)[0]
         q = np.random.normal(q, sigma_q, 1)[0]
         ecc = sp.stats.loguniform.rvs(ecc_min, ecc_max, 1)
-        return [self.dom_chirp(mchirp), self.dom_q(q), self.wrap_reflective(ecc, ecc_min, ecc_max)]    
-
-    def gen_seed_near_best_fit_EC_3D(self, x, sigma_ecc = 0.5, sigma_mchirp = 0.5, sigma_q = 0.1):
-        chirp_mass, q, ecc = x
+        phi = np.random.uniform(phi_min, phi_max, 1)[0]
+        return [self.dom_chirp(mchirp), self.dom_q(q), self.wrap_reflective(ecc, ecc_min, ecc_max), self.wrap_reflective(phi, phi_min, phi_max)]    
+    
+    def gen_seed_near_best_fit_EC_4D(self, x, sigma_ecc = 0.5, sigma_mchirp = 0.5, sigma_q = 0.1, sigma_phi=0.5):
+        chirp_mass, q, ecc, phi = x
 
         mchirp = np.random.normal(chirp_mass, sigma_mchirp, 1)[0]
         q = np.random.normal(q, sigma_q, 1)[0]
         ecc = np.random.normal(ecc, sigma_ecc, 1)[0]
-        x_near = [self.dom_chirp(mchirp), self.dom_q(q), self.wrap_reflective(ecc, 1e-3, .5)]
+        phi = np.random.normal(phi, sigma_phi, 1)[0]
+        x_near = [self.dom_chirp(mchirp), self.dom_q(q), self.wrap_reflective(ecc, 1e-3, .6), self.wrap_reflective(phi, 0, 2*np.pi)]
         return x_near
     
     def wf_ecc_gen_td(self, prms, dt, f_low=20, apx="IMRPhenomXPHM", **kwargs):
@@ -705,7 +699,7 @@ class FF_EC_3D_zero_spin(FF_2D_zero_spin):
         
         """
 
-        m1, m2, ecc = prms
+        m1, m2, ecc, anomaly = prms
         waveform_params = {
             'approximant': 'IMRPhenomXPHM',
             'mass_1': m1,
@@ -722,16 +716,32 @@ class FF_EC_3D_zero_spin(FF_2D_zero_spin):
             'f_lower': f_low,
             'f_ref': kwargs['f_ref'],
             'delta_t': dt,
-            'ecc': ecc
+            'ecc': ecc,
+            'anomaly': anomaly,
+            "mode_array": [[2, 1], [2, 2], [3, 2], [3, 3], [4, 4]],
+            "ecc_freq": 0,
+            "initial_frequency": 10,
+            "ode_abstol": 1e-8,
+            "ode_reltol": 1e-7,
+            "min_td_duration": 4.0, 
         }
 
         pars = ecc_gen.teobresums_pars_update(waveform_params)
         h = ecc_gen.teobresums_td_pure_polarized_wf_gen(**pars)
         hp, hc = pycbc.types.TimeSeries(h['hp'], delta_t = h['hp'].delta_t), pycbc.types.TimeSeries(h['hc'], delta_t = h['hc'].delta_t)
 
+        wf_complex = hp - 1j * hc
+        gen = waveforms.PairsWaveformGeneration()
+        t_shift = gen.determine_time_shift(wf_complex)
+        wf_shifted = gen.cyclic_time_shift_of_WF(wf_complex, rwrap=t_shift)
+        wf_shifted.start_time = 0
+        
+        hp = pycbc.types.TimeSeries(wf_shifted.real(), delta_t=dt)
+        hc = pycbc.types.TimeSeries(-1 * wf_shifted.imag(), delta_t=dt)
+
         return hp, hc
     
-    def objective_func_EC_3D(self, x, *args):
+    def objective_func_EC_4D(self, x, *args):
         """
         Objective function for the maximisation/minimsation.
 
@@ -742,9 +752,10 @@ class FF_EC_3D_zero_spin(FF_2D_zero_spin):
         if (m1 < 3.5 or m2 < 3.5 or m1 > 80 or m2 > 80):
             return 1e4
         
-        x[2] = self.wrap_reflective(x[2], 1e-3, .5)
+        x[2] = self.wrap_reflective(x[2], 1e-3, .6)
+        x[3] = self.wrap_reflective(x[3], 0, 2*np.pi)
 
-        gen_prms = m1, m2, x[2]
+        gen_prms = m1, m2, x[2], x[3]
 
         signal, f_low, f_high, apx, kwargs = args
         dt_lw = signal.delta_t
@@ -756,15 +767,15 @@ class FF_EC_3D_zero_spin(FF_2D_zero_spin):
         except ValueError:
             return 1e4
         
-class FF_EC_5D_aligned_spin(FF_EC_3D_zero_spin):   
+class FF_EC_6D_aligned_spin(FF_EC_4D_zero_spin):   
     """
-    Functions for `wf_model` == 'EC_5D'.
+    Functions for `wf_model` == 'EC_6D'.
 
     """
     
-    def gen_seed_prm_EC_5D(self, chirp_mass=25, q=1, chi_1=0, chi_2=0, ecc=0.1, ecc_min=1e-3, ecc_max=.5, sigma_mchirp=0.5, sigma_q=0.2, sigma_chi=0.2):
+    def gen_seed_prm_EC_6D(self, chirp_mass=25, q=1, chi_1=0, chi_2=0, ecc=0.1, ecc_min=1e-3, ecc_max=.6, phi_min=0, phi_max=2*np.pi, sigma_mchirp=0.5, sigma_q=0.2, sigma_chi=0.2):
         """
-        Generates seed point in 5D [m1, m2, s_1z, s_2z, e] for match maximisation; uses reasonable initial bounds.
+        Generates seed point in 6D [m1, m2, s_1z, s_2z, e, phi] for match maximisation; uses reasonable initial bounds.
 
         """ 
 
@@ -773,17 +784,19 @@ class FF_EC_5D_aligned_spin(FF_EC_3D_zero_spin):
         sz1 = np.random.normal(chi_1, sigma_chi, 1)[0]
         sz2 = np.random.normal(chi_2, sigma_chi, 1)[0]
         ecc = sp.stats.loguniform.rvs(ecc_min, ecc_max, 1)
-        return [self.dom_chirp(mchirp), self.dom_q(q), self.dom_sp(sz1), self.dom_sp(sz2), self.wrap_reflective(ecc, ecc_min, ecc_max)]    
-
-    def gen_seed_near_best_fit_EC_5D(self, x, sigma_ecc = 0.5, sigma_mchirp = 0.5, sigma_q = 0.1, sigma_chi = 0.1):
-        chirp_mass, q, sz1, sz2, ecc = x
+        anomaly = np.random.uniform(phi_min, phi_max, 1)[0]
+        return [self.dom_chirp(mchirp), self.dom_q(q), self.dom_sp(sz1), self.dom_sp(sz2), self.wrap_reflective(ecc, ecc_min, ecc_max), self.wrap_reflective(anomaly, phi_min, phi_max)]
+    
+    def gen_seed_near_best_fit_EC_6D(self, x, sigma_ecc = 0.5, sigma_mchirp = 0.5, sigma_q = 0.1, sigma_chi = 0.1, sigma_phi=0.5):
+        chirp_mass, q, sz1, sz2, ecc, phi = x
 
         mchirp = np.random.normal(chirp_mass, sigma_mchirp, 1)[0]
         q = np.random.normal(q, sigma_q, 1)[0]
         sz1 = np.random.normal(sz1, sigma_chi, 1)[0]
         sz2 = np.random.normal(sz2, sigma_chi, 1)[0]
         ecc = np.random.normal(ecc, sigma_ecc, 1)[0]
-        x_near = [self.dom_chirp(mchirp), self.dom_q(q), self.dom_sp(sz1), self.dom_sp(sz2), self.wrap_reflective(ecc, 1e-3, .5)]
+        phi = np.random.normal(phi, sigma_phi, 1)[0]
+        x_near = [self.dom_chirp(mchirp), self.dom_q(q), self.dom_sp(sz1), self.dom_sp(sz2), self.wrap_reflective(ecc, 1e-3, .6), self.wrap_reflective(phi, 0, 2*np.pi)]
         return x_near
 
     def wf_ecc_gen_td(self, prms, dt, f_low=20, apx="IMRPhenomXPHM", **kwargs): 
@@ -792,7 +805,7 @@ class FF_EC_5D_aligned_spin(FF_EC_3D_zero_spin):
 
         """
 
-        m1, m2, sz1, sz2, ecc = prms
+        m1, m2, sz1, sz2, ecc, phi = prms
         spin1x, spin1y, sz1 = self.dom_sp([kwargs['spin1x'], kwargs['spin1y'], sz1])
         spin2x, spin2y, sz2 = self.dom_sp([kwargs['spin2x'], kwargs['spin2y'], sz2])   
 
@@ -812,16 +825,32 @@ class FF_EC_5D_aligned_spin(FF_EC_3D_zero_spin):
             'f_lower': f_low,
             'f_ref': kwargs['f_ref'],
             'delta_t': dt,
-            'ecc': ecc
+            'ecc': ecc,
+            'anomaly': phi,
+            "mode_array": [[2, 1], [2, 2], [3, 2], [3, 3], [4, 4]],
+            "ecc_freq": 0,
+            "initial_frequency": 10,
+            "ode_abstol": 1e-8,
+            "ode_reltol": 1e-7,
+            "min_td_duration": 4.0, 
         }
 
         pars = ecc_gen.teobresums_pars_update(waveform_params)
         h = ecc_gen.teobresums_td_pure_polarized_wf_gen(**pars)
         hp, hc = pycbc.types.TimeSeries(h['hp'], delta_t = h['hp'].delta_t), pycbc.types.TimeSeries(h['hc'], delta_t = h['hc'].delta_t)
+        
+        wf_complex = hp - 1j * hc
+        gen = waveforms.PairsWaveformGeneration()
+        t_shift = gen.determine_time_shift(wf_complex)
+        wf_shifted = gen.cyclic_time_shift_of_WF(wf_complex, rwrap=t_shift)
+        wf_shifted.start_time = 0
+        
+        hp = pycbc.types.TimeSeries(wf_shifted.real(), delta_t=dt)
+        hc = pycbc.types.TimeSeries(-1 * wf_shifted.imag(), delta_t=dt)
 
         return hp, hc
         
-    def objective_func_EC_5D(self, x, *args):
+    def objective_func_EC_6D(self, x, *args):
         """
         Objective function for the maximisation/minimsation.
 
@@ -829,13 +858,14 @@ class FF_EC_5D_aligned_spin(FF_EC_3D_zero_spin):
 
         x[0], x[1] = self.dom_chirp(x[0]), self.dom_q(x[1])
         m1, m2 = mchirp_q_to_m1m2(x[0], x[1])
-        if (m1 < 3.5 or m2 < 3.5 or m1 > 80 or m2 > 80):  # if mchirp and q doesn't lead to reasonable binary masses, they will be avoided
+        if (m1 < 3.5 or m2 < 3.5 or m1 > 80 or m2 > 80):
             return 1e4
 
         x[2], x[3] = self.dom_sp(x[2]), self.dom_sp(x[3])
-        x[4] = self.wrap_reflective(x[4], 1e-3, .5)
+        x[4] = self.wrap_reflective(x[4], 1e-3, .6)
+        x[5] = self.wrap_reflective(x[5], 0, 2*np.pi)
 
-        gen_prms = m1, m2, x[2], x[3], x[4]
+        gen_prms = m1, m2, x[2], x[3], x[4], x[5]
 
         signal, f_low, f_high, apx, kwargs = args
         dt_lw = signal.delta_t
@@ -850,57 +880,7 @@ class FF_EC_5D_aligned_spin(FF_EC_3D_zero_spin):
 ############################################################################################################################################################################
 ############################################################################################################################################################################
 
-class PointLensML:
-
-    def __init__(self):        
-        import pickle
-        with open('/home/nishkal.rao/git_overlap/src/data/point_lens_Ff_lookup_table_Geo_relErr_1p0.pkl', 'rb') as f:
-            self.Ff_grid = pickle.load(f)
-            self.ys_grid, self.ws_grid = self.y_w_grid_data(self.Ff_grid) 
-        
-    ## functions
-    def y_w_grid_data(self, Ff_grid):
-        ys_grid = np.array([Ff_grid[str(i)]['y'] for i in range(len(Ff_grid))])
-        ws_grid = Ff_grid['0']['ws']
-        return ys_grid, ws_grid
-
-    def y_index(self, yl, ys_grid):
-        return np.argmin(np.abs(ys_grid - yl))
-
-    def w_index(self, w, ws_grid):
-        return np.argmin(np.abs(ws_grid - w))
-
-    def pnt_Ff_lookup_table(self, fs, Mlz, yl, ys_grid=None, ws_grid=None, extrapolate=True):
-        ys_grid, ws_grid = self.ys_grid, self.ws_grid
-        wfs = np.array([pnt_lens_cy.w_of_f(f, Mlz) for f in fs])
-        wc = pnt_lens_cy.wc_geo_re1p0(yl)
-
-        wfs_1 = wfs[wfs <= np.min(ws_grid)]
-        Ffs_1 = np.array([1]*len(wfs_1))
-
-        wfs_2 = wfs[(wfs > np.min(ws_grid))&(wfs <= np.max(ws_grid))]
-        wfs_2_wave = wfs_2[wfs_2 <= wc]
-        wfs_2_geo = wfs_2[wfs_2 > wc]
-
-        i_y  = self.y_index(yl, ys_grid)
-        tmp_Ff_dict = self.Ff_grid[str(i_y)]
-        ws = tmp_Ff_dict['ws']
-        Ffs = tmp_Ff_dict['Ffs_real'] + 1j*tmp_Ff_dict['Ffs_imag']
-        fill_val = ['interpolate', 'extrapolate'][extrapolate]
-        i_Ff = interp1d(ws, Ffs, fill_value=fill_val)
-        Ffs_2_wave = i_Ff(wfs_2_wave)
-
-        Ffs_2_geo = np.array([pnt_lens_cy.point_Fw_geo(w, yl) for w in wfs_2_geo])
-
-        wfs_3 = wfs[wfs > np.max(ws_grid) ]
-        Ffs_3 = np.array([pnt_lens_cy.point_Fw_geo(w, Mlz) for w in wfs_3])
-
-        Ffs = np.concatenate((Ffs_1, Ffs_2_wave, Ffs_2_geo, Ffs_3))
-        assert len(Ffs)==len(fs), 'len(Ffs) = {} does not match len(fs) = {}'.format(len(Ffs), len(fs))
-        return Ffs
-
-
-class FF_ML_4D_zero_spin(PointLensML, FF_2D_zero_spin):
+class FF_ML_4D_zero_spin(FF_2D_zero_spin):
     """
     Functions for `wf_model` == 'ML_4D'.
 
@@ -942,14 +922,19 @@ class FF_ML_4D_zero_spin(PointLensML, FF_2D_zero_spin):
         if round(Mlz) == 0:
             return fd_hp, fd_hc
         else:
+            gen = waveforms.PairsWaveformGeneration()
+            gen.import_lookup()
+
             fs = fd_hp.sample_frequencies
-            wfs = np.array([pnt_lens_cy.w_of_f(f, Mlz) for f in fs])
+            Ff = gen.pnt_Ff_lookup_table(fs=fs, Mlz=Mlz, yl=yl)
             
-            Ff = self.pnt_Ff_lookup_table(fs=fs, Mlz=Mlz, yl=yl)
-            lfd_hp = Ff*fd_hp
+            # LAL waveforms use engineering convention, physics F(f) requires conjugate here.
+            Ff_eng = np.conj(Ff)
+
+            lfd_hp = Ff_eng*fd_hp
             lfd_hp = pycbc.types.FrequencySeries(lfd_hp, delta_f = df)
 
-            lfd_hc = Ff*fd_hc
+            lfd_hc = Ff_eng*fd_hc
             lfd_hc = pycbc.types.FrequencySeries(lfd_hc, delta_f = df)
             return lfd_hp, lfd_hc
         
@@ -978,8 +963,8 @@ class FF_ML_4D_zero_spin(PointLensML, FF_2D_zero_spin):
         except ValueError:
             return 1e4
 
-    
-class FF_ML_6D_aligned_spin(PointLensML, FF_4D_aligned_spin):   
+
+class FF_ML_6D_aligned_spin(FF_4D_aligned_spin):   
     """
     Functions for `wf_model` == 'ML_6D'.
 
@@ -1024,14 +1009,18 @@ class FF_ML_6D_aligned_spin(PointLensML, FF_4D_aligned_spin):
         if round(Mlz) == 0:
             return fd_hp, fd_hc
         else:
+            gen = waveforms.PairsWaveformGeneration()
+            gen.import_lookup() 
+
             fs = fd_hp.sample_frequencies
-            wfs = np.array([pnt_lens_cy.w_of_f(f, Mlz) for f in fs])
-            
-            Ff = self.pnt_Ff_lookup_table(fs=fs, Mlz=Mlz, yl=yl)
-            lfd_hp = Ff*fd_hp
+            Ff = gen.pnt_Ff_lookup_table(fs=fs, Mlz=Mlz, yl=yl)
+
+            Ff_eng = np.conj(Ff)
+
+            lfd_hp = Ff_eng*fd_hp
             lfd_hp = pycbc.types.FrequencySeries(lfd_hp, delta_f = df)
 
-            lfd_hc = Ff*fd_hc
+            lfd_hc = Ff_eng*fd_hc
             lfd_hc = pycbc.types.FrequencySeries(lfd_hc, delta_f = df)
             return lfd_hp, lfd_hc     
         
@@ -1044,7 +1033,7 @@ class FF_ML_6D_aligned_spin(PointLensML, FF_4D_aligned_spin):
 
         x[0], x[1] = self.dom_chirp(x[0]), self.dom_q(x[1])
         m1, m2 = mchirp_q_to_m1m2(x[0], x[1])
-        if (m1 < 3.5 or m2 < 3.5):  # if mchirp and q doesn't lead to reasonable binary masses, they will be avoided
+        if (m1 < 3.5 or m2 < 3.5):
             return 1e4
 
         x[2], x[3] = self.dom_sp(x[2]), self.dom_sp(x[3])
@@ -1074,12 +1063,12 @@ def compute_fitting_factor(signal, wf_model = '2D', apx="IMRPhenomXPHM", psd=Non
     ----------
     signal : pycbc.types.TimeSeries
         WF for which FF will be evaluated.
-    wf_model : {'2D', '4D', 'EC_3D', 'EC_5D', 'ML_4D', 'ML_6D'}, optional
+    wf_model : {'2D', '4D', 'EC_4D', 'EC_6D', 'ML_4D', 'ML_6D'}, optional
         WF model to use for recovery. Default = '2D'.
         * '2D' represents 2D zero spin recovery in {chirp_mass, mass_ratio}.
         * '4D' represents 4D aligned spin recovery in {chirp_mass, mass_ratio, spin1z, spin2z}.
-        * 'EC_3D' represents 3D eccentric zero spin recovery in {chirp_mass, mass_ratio, eccentricity}.
-        * 'EC_5D' represents 5D eccentric aligned spin recovery in {eccentricity, chirp_mass, mass_ratio, spin1z, spin2z}.
+        * 'EC_4D' represents 4D eccentric zero spin recovery in {chirp_mass, mass_ratio, eccentricity, anomaly}.
+        * 'EC_6D' represents 6D eccentric aligned spin recovery in {chirp_mass, mass_ratio, spin1z, spin2z, eccentricity, anomaly}.
         * 'ML_4D' represents 4D microlensed zero spin recovery in {chirp_mass, mass_ratio, Mlz, y_lens}.        
         * 'ML_6D' represents 6D microlensed aligned spin recovery in {redshifted_lens_mass, impact_parameter, chirp_mass, mass_ratio, spin1z, spin2z}.
 
@@ -1105,8 +1094,8 @@ def compute_fitting_factor(signal, wf_model = '2D', apx="IMRPhenomXPHM", psd=Non
     keyword_args = dict(Mtot=np.random.uniform(7, 200), q=0.05 + (1 - 0.05)*np.random.power(2, 1), 
                         spin1z=0, spin2z=0,
                         spin1x=0, spin1y=0, spin2x=0, spin2y=0, 
-                        Mlz=10**np.random.uniform(1, 4), y_lens=0.01 + (3 - 0.01)*np.random.power(2, 1), 
-                        ecc=sp.stats.loguniform.rvs(1e-3, .5, 1),
+                        Mlz=10**np.random.uniform(-1, 5), y_lens=0.01 + (3 - 0.01)*np.random.power(2, 1), 
+                        ecc=sp.stats.loguniform.rvs(1e-3, .35, 1), phi= np.random.uniform(0, 2*np.pi, 1)[0],
                         coa_phase = 0, inclination = 0, f_ref = f_low,
                         sigma_mchirp=1, sigma_q=0.2, sigma_chi=0.2,
                         max_wait_per_iter=None, default_value=0)
@@ -1123,16 +1112,16 @@ def compute_fitting_factor(signal, wf_model = '2D', apx="IMRPhenomXPHM", psd=Non
         gen_prms = FF_UL.gen_seed_prm_4D
         gen_seed_near_best_fit = FF_UL.gen_seed_near_best_fit_4D
         objective_func = FF_UL.objective_func_4D
-    elif wf_model == 'EC_3D':
-        FF_EC = FF_EC_3D_zero_spin()
-        gen_prms = FF_EC.gen_seed_prm_EC_3D
-        gen_seed_near_best_fit = FF_EC.gen_seed_near_best_fit_EC_3D
-        objective_func = FF_EC.objective_func_EC_3D
-    elif wf_model == 'EC_5D':
-        FF_EC = FF_EC_5D_aligned_spin()
-        gen_prms = FF_EC.gen_seed_prm_EC_5D
-        gen_seed_near_best_fit = FF_EC.gen_seed_near_best_fit_EC_5D
-        objective_func = FF_EC.objective_func_EC_5D
+    elif wf_model == 'EC_4D':
+        FF_EC = FF_EC_4D_zero_spin()
+        gen_prms = FF_EC.gen_seed_prm_EC_4D
+        gen_seed_near_best_fit = FF_EC.gen_seed_near_best_fit_EC_4D
+        objective_func = FF_EC.objective_func_EC_4D
+    elif wf_model == 'EC_6D':
+        FF_EC = FF_EC_6D_aligned_spin()
+        gen_prms = FF_EC.gen_seed_prm_EC_6D
+        gen_seed_near_best_fit = FF_EC.gen_seed_near_best_fit_EC_6D
+        objective_func = FF_EC.objective_func_EC_6D
     elif wf_model == 'ML_4D':
         FF_ML = FF_ML_4D_zero_spin()
         gen_prms = FF_ML.gen_seed_prm_ML_4D
@@ -1144,7 +1133,7 @@ def compute_fitting_factor(signal, wf_model = '2D', apx="IMRPhenomXPHM", psd=Non
         gen_seed_near_best_fit = FF_ML.gen_seed_near_best_fit_ML_6D
         objective_func = FF_ML.objective_func_ML_6D         
     else:
-        raise Exception("Allowed values for the keyword argument 'wf_model' = ['2D', '4D', 'EC_3D', EC_5D, 'ML_4D', 'ML_6D']. But 'wf_model = %s' provided instead."%(wf_model) )
+        raise Exception("Allowed values for the keyword argument 'wf_model' = ['2D', '4D', 'EC_4D', EC_6D, 'ML_4D', 'ML_6D']. But 'wf_model = %s' provided instead."%(wf_model) )
     
     res_prms = []
 
@@ -1160,25 +1149,34 @@ def compute_fitting_factor(signal, wf_model = '2D', apx="IMRPhenomXPHM", psd=Non
         if wf_model == '2D':
             tmp_best_val = gen_prms(chirp_mass=m1m2_to_mchirp(comp_masses[0], comp_masses[1]), q=q, 
                                     sigma_mchirp=sigma_mchirp, sigma_q=sigma_q)
+            bounds = [(3.5, 80), (3.5, 80)]
         elif wf_model == '4D':
             tmp_best_val = gen_prms(chirp_mass=m1m2_to_mchirp(comp_masses[0], comp_masses[1]), q=q, chi_1=sz_1, chi_2=sz_2,
                                     sigma_mchirp=sigma_mchirp, sigma_q=sigma_q, sigma_chi=sigma_chi)
-        elif wf_model == 'EC_3D':
+            bounds = [(3.5, 80), (3.5, 80), (-0.99, 0.99), (-0.99, 0.99)]
+        elif wf_model == 'EC_4D':
             tmp_best_val = gen_prms(chirp_mass=m1m2_to_mchirp(comp_masses[0], comp_masses[1]), q=q,
                                     sigma_mchirp=sigma_mchirp, sigma_q=sigma_q, ecc=ecc)
-        elif wf_model == 'EC_5D':
+            bounds = [(3.5, 80), (3.5, 80), (1e-3, .6), (0, 2*np.pi)]
+        elif wf_model == 'EC_6D':
             tmp_best_val = gen_prms(chirp_mass=m1m2_to_mchirp(comp_masses[0], comp_masses[1]), q=q, chi_1=sz_1, chi_2=sz_2,
                                     sigma_mchirp=sigma_mchirp, sigma_q=sigma_q, sigma_chi=sigma_chi, ecc=ecc)
+            bounds = [(3.5, 80), (3.5, 80), (-0.99, 0.99), (-0.99, 0.99), (1e-3, .6), (0, 2*np.pi)]
         elif wf_model == 'ML_4D':
             tmp_best_val = gen_prms(chirp_mass=m1m2_to_mchirp(comp_masses[0], comp_masses[1]), q=q, 
                                     sigma_mchirp=sigma_mchirp, sigma_q=sigma_q, Mlz=Mlz, y_lens=y_lens)
+            bounds = [(3.5, 80), (3.5, 80), (.1, 1e5), (0.01, 5)]
         elif wf_model == 'ML_6D':
             tmp_best_val = gen_prms(chirp_mass=m1m2_to_mchirp(comp_masses[0], comp_masses[1]), q=q, chi_1=sz_1, chi_2=sz_2,
                                     sigma_mchirp=sigma_mchirp, sigma_q=sigma_q, sigma_chi=sigma_chi, Mlz=Mlz, y_lens=y_lens)
+            bounds = [(3.5, 80), (3.5, 80), (-0.99, 0.99), (-0.99, 0.99), (.1, 1e5), (0.01, 5)]
         signal_copy = deepcopy(signal)
         
-        res = minimize(objective_func, tmp_best_val, args=(signal_copy, f_low, f_high, apx, keyword_args), method='Nelder-Mead', 
-                        options={'disp':True, 'adaptive':True, 'xatol':1e-4})
+        #res = minimize(objective_func, tmp_best_val, args=(signal_copy, f_low, f_high, apx, keyword_args), method='Nelder-Mead', 
+        #                options={'disp':True, 'adaptive':True, 'xatol':1e-4})
+        
+        res = differential_evolution(objective_func, bounds=bounds, args=(signal_copy, f_low, f_high, apx, keyword_args), 
+                                     strategy='best1bin', maxiter=40, popsize=15, tol = 1e-5, atol = 1e-7, mutation=0.5, recombination=0.7, disp=True, polish=True)
         
         FF_val = 1-np.power(10, objective_func(res.x, signal_copy, f_low, f_high, apx, keyword_args))
         res_prms.append([FF_val, list(res.x)])

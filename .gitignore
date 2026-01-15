@@ -1,7 +1,7 @@
-*.png
 *.h5
 *.hdf5
 *.pkl
+*.npy
 *.pickle
 *.json
 *.txt
@@ -9,7 +9,14 @@
 *.err
 *.out
 *.dat
-*.pdf
 *.version
 *.ipynb_checkpoints
 .obsidian
+__pycache__/
+*.pyc
+*.zip
+*.tar.gz
+*.png
+*.jpg
+*.jpeg
+*.gwf

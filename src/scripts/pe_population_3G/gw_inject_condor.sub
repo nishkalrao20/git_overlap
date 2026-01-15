@@ -1,0 +1,15 @@
+universe = vanilla
+executable = /home/nishkal.rao/git_overlap/src/scripts/pe_population_3G/gw_inject.py
+accounting_group = ligo.sim.o3.cbc.pe.bilby
+accounting_group_user = nishkal.rao
+initialdir = /home/nishkal.rao/git_overlap/src/scripts/pe_population_3G/
+request_disk = 64G
+request_memory = 16G
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+getenv = True
+arguments = $(ProcId)
+log = /home/nishkal.rao/git_overlap/src/output/pe_population_3G/condor/$(Process).log
+output = /home/nishkal.rao/git_overlap/src/output/pe_population_3G/condor/$(Process).out
+error = /home/nishkal.rao/git_overlap/src/output/pe_population_3G/condor/$(Process).err
+Queue 60 

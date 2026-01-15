@@ -1,0 +1,605 @@
+\begin{thebibliography}{10}
+
+\bibitem{LIGOScientific:2014pky}
+J.~Aasi et~al.
+\newblock {Advanced LIGO}.
+\newblock {\em Class. Quant. Grav.}, 32:074001, 2015.
+
+\bibitem{VIRGO:2014yos}
+F.~Acernese et~al.
+\newblock {Advanced Virgo: a second-generation interferometric gravitational
+  wave detector}.
+\newblock {\em Class. Quant. Grav.}, 32(2):024001, 2015.
+
+\bibitem{KAGRA:2021vkt}
+R.~Abbott et~al.
+\newblock {GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo
+  during the Second Part of the Third Observing Run}.
+\newblock {\em Phys. Rev. X}, 13(4):041039, 2023.
+
+\bibitem{GraceDB}
+GraceDB.
+\newblock Gracedb ligo/virgo/kagra public alerts.
+
+\bibitem{Somiya:2011np}
+Kentaro Somiya.
+\newblock {Detector configuration of KAGRA: The Japanese cryogenic
+  gravitational-wave detector}.
+\newblock {\em Class. Quant. Grav.}, 29:124007, 2012.
+
+\bibitem{Aso:2013eba}
+Yoichi Aso, Yuta Michimura, Kentaro Somiya, Masaki Ando, Osamu Miyakawa,
+  Takanori Sekiguchi, Daisuke Tatsumi, and Hiroaki Yamamoto.
+\newblock {Interferometer design of the KAGRA gravitational wave detector}.
+\newblock {\em Phys. Rev. D}, 88(4):043007, 2013.
+
+\bibitem{KAGRA:2018plz}
+T.~Akutsu et~al.
+\newblock {KAGRA: 2.5 Generation Interferometric Gravitational Wave Detector}.
+\newblock {\em Nature Astron.}, 3(1):35--40, 2019.
+
+\bibitem{KAGRA:2020tym}
+T.~Akutsu et~al.
+\newblock {Overview of KAGRA: Detector design and construction history}.
+\newblock {\em PTEP}, 2021(5):05A101, 2021.
+
+\bibitem{LigoIndia}
+Bala Iyer, Tarun Souradeep, CS~Unnikrishnan, Sanjeev Dhurandhar, Sandhi Raja,
+  and Anand Sengupta.
+\newblock {LIGO-India Tech. rep. }, 2011.
+
+\bibitem{Unnikrishnan:2013qwa}
+C.~S. Unnikrishnan.
+\newblock {IndIGO and LIGO-India: Scope and plans for gravitational wave
+  research and precision metrology in India}.
+\newblock {\em Int. J. Mod. Phys. D}, 22:1341010, 2013.
+
+\bibitem{Ajith:2024inj}
+P.~Ajith et~al.
+\newblock {Gravitational physics in the context of Indian astronomy: A vision
+  document}.
+\newblock {\em J. Astrophys. Astron.}, 46(1):6, 2025.
+
+\bibitem{Punturo:2010zz}
+M.~Punturo et~al.
+\newblock {The Einstein Telescope: A third-generation gravitational wave
+  observatory}.
+\newblock {\em Class. Quant. Grav.}, 27:194002, 2010.
+
+\bibitem{Hild:2010id}
+S.~Hild et~al.
+\newblock {Sensitivity Studies for Third-Generation Gravitational Wave
+  Observatories}.
+\newblock {\em Class. Quant. Grav.}, 28:094013, 2011.
+
+\bibitem{Reitze:2019iox}
+David Reitze et~al.
+\newblock {Cosmic Explorer: The U.S. Contribution to Gravitational-Wave
+  Astronomy beyond LIGO}.
+\newblock {\em Bull. Am. Astron. Soc.}, 51(7):035, 2019.
+
+\bibitem{LIGOScientific:2016wof}
+Benjamin~P Abbott et~al.
+\newblock {Exploring the Sensitivity of Next Generation Gravitational Wave
+  Detectors}.
+\newblock {\em Class. Quant. Grav.}, 34(4):044001, 2017.
+
+\bibitem{Regimbau:2016ike}
+T.~Regimbau, M.~Evans, N.~Christensen, E.~Katsavounidis, B.~Sathyaprakash, and
+  S.~Vitale.
+\newblock {Digging deeper: Observing primordial gravitational waves below the
+  binary black hole produced stochastic background}.
+\newblock {\em Phys. Rev. Lett.}, 118(15):151105, 2017.
+
+\bibitem{ET:2019dnz}
+Michele Maggiore et~al.
+\newblock {Science Case for the Einstein Telescope}.
+\newblock {\em JCAP}, 03:050, 2020.
+
+\bibitem{Sathyaprakash:2012jk}
+B.~Sathyaprakash et~al.
+\newblock {Scientific Objectives of Einstein Telescope}.
+\newblock {\em Class. Quant. Grav.}, 29:124013, 2012.
+\newblock [Erratum: Class.Quant.Grav. 30, 079501 (2013)].
+
+\bibitem{Branchesi:2023mws}
+Marica Branchesi et~al.
+\newblock {Science with the Einstein Telescope: a comparison of different
+  designs}.
+\newblock {\em JCAP}, 07:068, 2023.
+
+\bibitem{Regimbau:2009rk}
+Tania Regimbau and Scott~A. Hughes.
+\newblock {Gravitational-wave confusion background from cosmological compact
+  binaries: Implications for future terrestrial detectors}.
+\newblock {\em Phys. Rev. D}, 79:062002, 2009.
+
+\bibitem{Samajdar:2021egv}
+Anuradha Samajdar, Justin Janquart, Chris Van Den~Broeck, and Tim Dietrich.
+\newblock {Biases in parameter estimation from overlapping gravitational-wave
+  signals in the third-generation detector era}.
+\newblock {\em Phys. Rev. D}, 104(4):044003, 2021.
+
+\bibitem{Pizzati:2022apa}
+Elia Pizzati, Surabhi Sachdev, Anuradha Gupta, and Bangalore Sathyaprakash.
+\newblock {Toward inference of overlapping gravitational-wave signals}.
+\newblock {\em Phys. Rev. D}, 105(10):104016, 2022.
+
+\bibitem{Relton:2021cax}
+Philip Relton and Vivien Raymond.
+\newblock {Parameter estimation bias from overlapping binary black hole events
+  in second generation interferometers}.
+\newblock {\em Phys. Rev. D}, 104(8):084039, 2021.
+
+\bibitem{Antonelli:2021vwg}
+Andrea Antonelli, Ollie Burke, and Jonathan~R. Gair.
+\newblock {Noisy neighbours: inference biases from overlapping
+  gravitational-wave signals}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 507(4):5069--5086, 2021.
+
+\bibitem{Himemoto:2021ukb}
+Yoshiaki Himemoto, Atsushi Nishizawa, and Atsushi Taruya.
+\newblock {Impacts of overlapping gravitational-wave signals on the parameter
+  estimation: Toward the search for cosmological backgrounds}.
+\newblock {\em Phys. Rev. D}, 104(4):044010, 2021.
+
+\bibitem{Janquart:2022fzz}
+Justin Janquart, Tomasz Baka, Anuradha Samajdar, Tim Dietrich, and Chris Van
+  Den~Broeck.
+\newblock {Analyses of overlapping gravitational wave signals using
+  hierarchical subtraction and joint parameter estimation}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 523(2):1699--1710, 2023.
+
+\bibitem{Speri:2022kaq}
+Lorenzo Speri, Nikolaos Karnesis, Arianna~I. Renzini, and Jonathan~R. Gair.
+\newblock {A roadmap of gravitational wave data analysis}.
+\newblock {\em Nature Astron.}, 6(12):1356--1363, 2022.
+
+\bibitem{Niu:2024wdi}
+Rui Niu and Wen Zhao.
+\newblock {Extracting overlapping gravitational-wave signals of galactic
+  compact binaries: a mini review}.
+\newblock 6 2024.
+
+\bibitem{Wang:2025ckw}
+Ziming Wang, Zexin Hu, and Lijing Shao.
+\newblock {Rigorous analytic solution to the gravitational-wave overlapping
+  event rates}.
+\newblock {\em arXiv preprint}, 1 2025.
+
+\bibitem{Relton:2022whr}
+Philip Relton, Andrea Virtuoso, Sophie Bini, Vivien Raymond, Ian Harry, Marco
+  Drago, Claudia Lazzaro, Andrea Miani, and Shubhanshu Tiwari.
+\newblock {Addressing the challenges of detecting time-overlapping compact
+  binary coalescences}.
+\newblock {\em Phys. Rev. D}, 106(10):104045, 2022.
+
+\bibitem{Hu:2022bji}
+Qian Hu and John Veitch.
+\newblock {Accumulating Errors in Tests of General Relativity with
+  Gravitational Waves: Overlapping Signals and Inaccurate Waveforms}.
+\newblock {\em Astrophys. J.}, 945(2):103, 2023.
+
+\bibitem{Wang:2023ldq}
+Ziming Wang, Dicong Liang, Junjie Zhao, Chang Liu, and Lijing Shao.
+\newblock {Anatomy of parameter-estimation biases in overlapping
+  gravitational-wave signals}.
+\newblock {\em Class. Quant. Grav.}, 41(5):055011, 2024.
+
+\bibitem{Langendorff:2022fzq}
+Jurriaan Langendorff, Alex Kolmus, Justin Janquart, and Chris Van Den~Broeck.
+\newblock {Normalizing Flows as an Avenue to Studying Overlapping Gravitational
+  Wave Signals}.
+\newblock {\em Phys. Rev. Lett.}, 130(17):171402, 2023.
+
+\bibitem{Alvey:2023naa}
+James Alvey, Uddipta Bhardwaj, Samaya Nissanke, and Christoph Weniger.
+\newblock {What to do when things get crowded? Scalable joint analysis of
+  overlapping gravitational wave signals}.
+\newblock {\em arXiv preprint}, 8 2023.
+
+\bibitem{Dang:2023xkj}
+Yixuan Dang, Ziming Wang, Dicong Liang, and Lijing Shao.
+\newblock {Impact of Overlapping Signals on Parameterized Post-Newtonian
+  Coefficients in Tests of Gravity}.
+\newblock {\em Astrophys. J.}, 964(2):194, 2024.
+
+\bibitem{Johnson:2024foj}
+Aaron~D. Johnson, Katerina Chatziioannou, and Will~M. Farr.
+\newblock {Source confusion from neutron star binaries in ground-based
+  gravitational wave detectors is minimal}.
+\newblock {\em Phys. Rev. D}, 109(8):084015, 2024.
+
+\bibitem{Hu:2025vlp}
+Qian Hu.
+\newblock {Hierarchical Subtraction with Neural Density Estimators as a General
+  Solution to Overlapping Gravitational Wave Signals}.
+\newblock 7 2025.
+
+\bibitem{Baka:2025yqx}
+Tomasz Baka, Harsh Narola, Justin Janquart, Anuradha Samajdar, Tim Dietrich,
+  and Chris Van Den~Broeck.
+\newblock {Overlapping signals in next-generation gravitational wave
+  observatories: A recipe for selecting the best parameter estimation
+  technique}.
+\newblock {\em arXiv preprint}, 7 2025.
+
+\bibitem{Klimenko:2015ypf}
+S.~Klimenko et~al.
+\newblock {Method for detection and reconstruction of gravitational wave
+  transients with networks of advanced detectors}.
+\newblock {\em Phys. Rev. D}, 93(4):042004, 2016.
+
+\bibitem{Klimenko:2021ypf}
+Sergey Klimenko, Gabriele Vedovato, Valentin Necula, Francesco Salemi, Marco
+  Drago, Eric Chassande-Mottin, Vaibhav Tiwari, Claudia Lazzaro, Brendan
+  O'Brian, Marek Szczepanczyk, Shubhanshu Tiwari, and V.~Gayathri.
+\newblock cwb pipeline library: 6.4.0, January 2021.
+
+\bibitem{Mishra:2024zzs}
+Tanmaya Mishra, Shubhagata Bhaumik, V.~Gayathri, Marek~J. Szczepa{\'n}czyk,
+  Imre Bartos, and Sergey Klimenko.
+\newblock {Gravitational waves detected by a burst search in
+  LIGO/Virgo{\textquoteright}s third observing run}.
+\newblock {\em Phys. Rev. D}, 111(2):023054, 2025.
+
+\bibitem{Gupta:2024gun}
+Anuradha Gupta et~al.
+\newblock {Possible causes of false general relativity violations in
+  gravitational wave observations}.
+\newblock 5 2024.
+
+\bibitem{LIGOScientific:2016vlm}
+B.~P. Abbott et~al.
+\newblock {Properties of the Binary Black Hole Merger GW150914}.
+\newblock {\em Phys. Rev. Lett.}, 116(24):241102, 2016.
+
+\bibitem{LIGOScientific:2016lio}
+B.~P. Abbott et~al.
+\newblock {Tests of general relativity with GW150914}.
+\newblock {\em Phys. Rev. Lett.}, 116(22):221101, 2016.
+\newblock [Erratum: Phys.Rev.Lett. 121, 129902 (2018)].
+
+\bibitem{LIGOScientific:2018mvr}
+B.~P. Abbott et~al.
+\newblock {GWTC-1: A Gravitational-Wave Transient Catalog of Compact Binary
+  Mergers Observed by LIGO and Virgo during the First and Second Observing
+  Runs}.
+\newblock {\em Phys. Rev. X}, 9(3):031040, 2019.
+
+\bibitem{LIGOScientific:2017ycc}
+B.~P. Abbott et~al.
+\newblock {GW170814: A Three-Detector Observation of Gravitational Waves from a
+  Binary Black Hole Coalescence}.
+\newblock {\em Phys. Rev. Lett.}, 119(14):141101, 2017.
+
+\bibitem{Nakamura:1999uwi}
+Takahiro~T. Nakamura and Shuji Deguchi.
+\newblock {Wave Optics in Gravitational Lensing}.
+\newblock {\em Prog. Theor. Phys. Suppl.}, 133:137--153, 1999.
+
+\bibitem{Takahashi:2003ix}
+Ryuichi Takahashi and Takashi Nakamura.
+\newblock {Wave effects in gravitational lensing of gravitational waves from
+  chirping binaries}.
+\newblock {\em Astrophys. J.}, 595:1039--1051, 2003.
+
+\bibitem{Dai:2017huk}
+Liang Dai and Tejaswi Venumadhav.
+\newblock {On the waveforms of gravitationally lensed gravitational waves}.
+\newblock {\em arXiv preprint}, 2 2017.
+
+\bibitem{Ezquiaga:2020gdt}
+Jose~Mar\'\i{}a Ezquiaga, Daniel~E. Holz, Wayne Hu, Macarena Lagos, and
+  Robert~M. Wald.
+\newblock {Phase effects from strong gravitational lensing of gravitational
+  waves}.
+\newblock {\em Phys. Rev. D}, 103(6):064047, 2021.
+
+\bibitem{Vijaykumar:2022dlp}
+Aditya Vijaykumar, Ajit~Kumar Mehta, and Apratim Ganguly.
+\newblock {Detection and parameter estimation challenges of type-II lensed
+  binary black hole signals}.
+\newblock {\em Phys. Rev. D}, 108(4):043036, 2023.
+
+\bibitem{Wright:2024mco}
+Mick Wright, Justin Janquart, and Nathan~K. Johnson-McDaniel.
+\newblock {Effect of Deviations from General Relativity on Searches for
+  Gravitational Wave Microlensing and Type II Strong Lensing}.
+\newblock {\em arXiv preprint}, 3 2024.
+
+\bibitem{Basak:2021ten}
+S.~Basak, A.~Ganguly, K.~Haris, S.~Kapadia, A.~K. Mehta, and P.~Ajith.
+\newblock {Constraints on Compact Dark Matter from Gravitational Wave
+  Microlensing}.
+\newblock {\em Astrophys. J.}, 926(2):L28, 2022.
+
+\bibitem{Mishra:2023ddt}
+Anuj Mishra, Ashish~Kumar Meena, Anupreeta More, and Sukanta Bose.
+\newblock {Exploring the impact of microlensing on gravitational wave signals:
+  Biases, population characteristics, and prospects for detection}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 531(1):764--787, 2024.
+
+\bibitem{Schneider:1992bmb}
+Peter Schneider, J\"urgen Ehlers, and Emilio~E. Falco.
+\newblock {\em {Gravitational Lenses}}.
+\newblock Astronomy and Astrophysics Library. Springer, 1992.
+
+\bibitem{Janquart:2023mvf}
+Justin Janquart et~al.
+\newblock {Follow-up analyses to the O3
+  LIGO\textendash{}Virgo\textendash{}KAGRA lensing searches}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 526(3):3832--3860, 2023.
+
+\bibitem{Meena:2019ate}
+Ashish~Kumar Meena and J.~S. Bagla.
+\newblock {Gravitational lensing of gravitational waves: wave nature and
+  prospects for detection}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 492(1):1127--1134, 2020.
+
+\bibitem{Mishra:2021xzz}
+Anuj Mishra, Ashish~Kumar Meena, Anupreeta More, Sukanta Bose, and
+  Jasjeet~Singh Bagla.
+\newblock {Gravitational lensing of gravitational waves: effect of microlens
+  population in lensing galaxies}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 508(4):4869--4886, 2021.
+
+\bibitem{LIGOScientific:2023bwz}
+R.~Abbott et~al.
+\newblock {Search for Gravitational-lensing Signatures in the Full Third
+  Observing Run of the LIGO{\textendash}Virgo Network}.
+\newblock {\em Astrophys. J.}, 970(2):191, 2024.
+
+\bibitem{Mishra:2023vzo}
+Anuj Mishra, N.~V. Krishnendu, and Apratim Ganguly.
+\newblock {Unveiling microlensing biases in testing general relativity with
+  gravitational waves}.
+\newblock {\em Phys. Rev. D}, 110(8):084009, 2024.
+
+\bibitem{Liu:2023ikc}
+Anna Liu, Isaac C.~F. Wong, Samson H.~W. Leong, Anupreeta More, Otto~A.
+  Hannuksela, and Tjonnie G.~F. Li.
+\newblock {Exploring the hidden Universe: a novel phenomenological approach for
+  recovering arbitrary gravitational-wave millilensing configurations}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 525(3):4149--4160, 2023.
+
+\bibitem{Chakraborty:2025maj}
+Aniruddha Chakraborty and Suvodip Mukherjee.
+\newblock {The First Model-independent Chromatic Microlensing Search: No
+  Evidence in the Gravitational Wave Catalog of
+  LIGO{\textendash}Virgo{\textendash}KAGRA}.
+\newblock {\em Astrophys. J.}, 990(1):68, 2025.
+
+\bibitem{Abbott:2020search}
+Benjamin~P Abbott, R~Abbott, TD~Abbott, S~Abraham, F~Acernese, K~Ackley,
+  C~Adams, VB~Adya, C~Affeldt, M~Agathos, et~al.
+\newblock Prospects for observing and localizing gravitational-wave transients
+  with advanced ligo, advanced virgo and kagra.
+\newblock {\em Living reviews in relativity}, 23:1--69, 2020.
+
+\bibitem{LIGOScientific:2021djp}
+R.~Abbott et~al.
+\newblock {GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo
+  During the Second Part of the Third Observing Run}.
+\newblock 11 2021.
+
+\bibitem{Fishbach:2018edt}
+Maya Fishbach, Daniel~E. Holz, and Will~M. Farr.
+\newblock {Does the Black Hole Merger Rate Evolve with Redshift?}
+\newblock {\em Astrophys. J. Lett.}, 863(2):L41, 2018.
+
+\bibitem{Wysocki:2018mpo}
+Daniel Wysocki, Jacob Lange, and Richard O'Shaughnessy.
+\newblock {Reconstructing phenomenological distributions of compact binaries
+  via gravitational wave observations}.
+\newblock {\em Phys. Rev. D}, 100(4):043012, 2019.
+
+\bibitem{Owen:1995tm}
+Benjamin~J. Owen.
+\newblock {Search templates for gravitational waves from inspiraling binaries:
+  Choice of template spacing}.
+\newblock {\em Phys. Rev. D}, 53:6749--6761, 1996.
+
+\bibitem{Owen:1998dk}
+Benjamin~J. Owen and B.~S. Sathyaprakash.
+\newblock {Matched filtering of gravitational waves from inspiraling compact
+  binaries: Computational cost and template placement}.
+\newblock {\em Phys. Rev. D}, 60:022002, 1999.
+
+\bibitem{Lagarias:1998iqa}
+Jeffrey~C. Lagarias, James~A. Reeds, Margaret~H. Wright, and Paul~E. Wright.
+\newblock {Convergence Properties of the Nelder-Mead Simplex Method in Low
+  Dimensions}.
+\newblock {\em SIAM J. Optim.}, 9:112--147, 1998.
+
+\bibitem{Jaranowski:2005hz}
+Piotr Jaranowski and Andrzej Krolak.
+\newblock {Gravitational-Wave Data Analysis. Formalism and Sample Applications:
+  The Gaussian Case}.
+\newblock {\em Living Rev. Rel.}, 8:3, 2005.
+
+\bibitem{Ajith:2007kx}
+P.~Ajith et~al.
+\newblock {A Template bank for gravitational waveforms from coalescing binary
+  black holes. I. Non-spinning binaries}.
+\newblock {\em Phys. Rev. D}, 77:104017, 2008.
+\newblock [Erratum: Phys.Rev.D 79, 129901 (2009)].
+
+\bibitem{Ajith:2007xh}
+P.~Ajith.
+\newblock {Gravitational-wave data analysis using binary black-hole waveforms}.
+\newblock {\em Class. Quant. Grav.}, 25:114033, 2008.
+
+\bibitem{CalderonBustillo:2015lrt}
+Juan Calder{\'o}n~Bustillo, Sascha Husa, Alicia~M. Sintes, and Michael
+  P{\"u}rrer.
+\newblock {Impact of gravitational radiation higher order modes on single
+  aligned-spin gravitational wave searches for binary black holes}.
+\newblock {\em Phys. Rev. D}, 93(8):084019, 2016.
+
+\bibitem{Ajith:2012mn}
+P.~Ajith, N.~Fotopoulos, S.~Privitera, A.~Neunzert, and A.~J. Weinstein.
+\newblock {Effectual template bank for the detection of gravitational waves
+  from inspiralling compact binaries with generic spins}.
+\newblock {\em Phys. Rev. D}, 89(8):084041, 2014.
+
+\bibitem{Usman:2015kfa}
+Samantha~A. Usman et~al.
+\newblock {The PyCBC search for gravitational waves from compact binary
+  coalescence}.
+\newblock {\em Class. Quant. Grav.}, 33(21):215004, 2016.
+
+\bibitem{Cornish:2011ys}
+Neil Cornish, Laura Sampson, Nicolas Yunes, and Frans Pretorius.
+\newblock {Gravitational Wave Tests of General Relativity with the
+  Parameterized Post-Einsteinian Framework}.
+\newblock {\em Phys. Rev. D}, 84:062003, 2011.
+
+\bibitem{AzevedoFilho:2013lap}
+Adriano Azevedo-Filho and Ross~D. Shachter.
+\newblock Laplace's method approximations for probabilistic inference in belief
+  networks with continuous variables.
+\newblock {\em arXiv preprint}, 2013.
+
+\bibitem{Sampson:2013wia}
+Laura Sampson, Nicolas Yunes, and Neil Cornish.
+\newblock {Rosetta stone for parametrized tests of gravity}.
+\newblock {\em Phys. Rev. D}, 88(6):064056, 2013.
+\newblock [Erratum: Phys.Rev.D 88, 089902 (2013)].
+
+\bibitem{GilChoi:2022waq}
+Han Gil~Choi, Tao Yang, and Hyung~Mok Lee.
+\newblock {Importance of eccentricities in parameter estimation of compact
+  binary inspirals with decihertz gravitational-wave detectors}.
+\newblock {\em Phys. Rev. D}, 110(2):024025, 2024.
+
+\bibitem{Hannam:2013oca}
+Mark Hannam, Patricia Schmidt, Alejandro Boh\'e, Le\"\i{}la Haegel, Sascha
+  Husa, Frank Ohme, Geraint Pratten, and Michael P\"urrer.
+\newblock {Simple Model of Complete Precessing Black-Hole-Binary Gravitational
+  Waveforms}.
+\newblock {\em Phys. Rev. Lett.}, 113(15):151101, 2014.
+
+\bibitem{Husa:2015iqa}
+Sascha Husa, Sebastian Khan, Mark Hannam, Michael P\"urrer, Frank Ohme, Xisco
+  Jim\'enez~Forteza, and Alejandro Boh\'e.
+\newblock {Frequency-domain gravitational waves from nonprecessing black-hole
+  binaries. I. New numerical waveforms and anatomy of the signal}.
+\newblock {\em Phys. Rev. D}, 93(4):044006, 2016.
+
+\bibitem{Khan:2015jqa}
+Sebastian Khan, Sascha Husa, Mark Hannam, Frank Ohme, Michael P\"urrer, Xisco
+  Jim\'enez~Forteza, and Alejandro Boh\'e.
+\newblock {Frequency-domain gravitational waves from nonprecessing black-hole
+  binaries. II. A phenomenological model for the advanced detector era}.
+\newblock {\em Phys. Rev. D}, 93(4):044007, 2016.
+
+\bibitem{Pratten:2020ceb}
+Geraint Pratten et~al.
+\newblock {Computationally efficient models for the dominant and subdominant
+  harmonic modes of precessing binary black holes}.
+\newblock {\em Phys. Rev. D}, 103(10):104056, 2021.
+
+\bibitem{Ramos-Buades:2023ehm}
+Antoni Ramos-Buades, Alessandra Buonanno, H\'ector Estell\'es, Mohammed Khalil,
+  Deyan~P. Mihaylov, Serguei Ossokine, Lorenzo Pompili, and Mahlet Shiferaw.
+\newblock {Next generation of accurate and efficient multipolar precessing-spin
+  effective-one-body waveforms for binary black holes}.
+\newblock {\em Phys. Rev. D}, 108(12):124037, 2023.
+
+\bibitem{lalsuite}
+{LIGO Scientific Collaboration}, {Virgo Collaboration}, and {KAGRA
+  Collaboration}.
+\newblock {LVK} {A}lgorithm {L}ibrary - {LALS}uite.
+\newblock Free software (GPL), 2018.
+
+\bibitem{swiglal}
+Karl Wette.
+\newblock {SWIGLAL: Python and Octave interfaces to the LALSuite
+  gravitational-wave data analysis libraries}.
+\newblock {\em SoftwareX}, 12:100634, 2020.
+
+\bibitem{Davies:2020tsx}
+Gareth~S. Davies, Thomas Dent, M{\'a}rton T{\'a}pai, Ian Harry, Connor McIsaac,
+  and Alexander~H. Nitz.
+\newblock {Extending the PyCBC search for gravitational waves from compact
+  binary mergers to a global network}.
+\newblock {\em Phys. Rev. D}, 102(2):022004, 2020.
+
+\bibitem{Talbot:2019okv}
+Colm Talbot, Rory Smith, Eric Thrane, and Gregory~B. Poole.
+\newblock {Parallelized Inference for Gravitational-Wave Astronomy}.
+\newblock {\em Phys. Rev. D}, 100(4):043030, 2019.
+
+\bibitem{Ashton:2018jfp}
+Gregory Ashton et~al.
+\newblock {BILBY: A user-friendly Bayesian inference library for
+  gravitational-wave astronomy}.
+\newblock {\em Astrophys. J. Suppl.}, 241(2):27, 2019.
+
+\bibitem{Smith:2019ucc}
+Rory J.~E. Smith, Gregory Ashton, Avi Vajpeyi, and Colm Talbot.
+\newblock {Massively parallel Bayesian inference for transient
+  gravitational-wave astronomy}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 498(3):4492--4502, 2020.
+
+\bibitem{Romero-Shaw:2020owr}
+I.~M. Romero-Shaw et~al.
+\newblock {Bayesian inference for compact binary coalescences with bilby:
+  validation and application to the first LIGO\textendash{}Virgo
+  gravitational-wave transient catalogue}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 499(3):3295--3319, 2020.
+
+\bibitem{Speagle:2019ivv}
+Joshua~S. Speagle.
+\newblock {dynesty: a dynamic nested sampling package for estimating Bayesian
+  posteriors and evidences}.
+\newblock {\em Mon. Not. Roy. Astron. Soc.}, 493(3):3132--3158, 2020.
+
+\bibitem{pycbc}
+Alex Nitz, Ian Harry, Duncan Brown, Christopher~M. Biwer, Josh Willis, Tito~Dal
+  Canton, Collin Capano, Thomas Dent, Larne Pekowsky, Gareth S~Cabourn Davies,
+  Soumi De, Miriam Cabero, Shichao Wu, Andrew~R. Williamson, Bernd
+  Machenschalk, Duncan Macleod, Francesco Pannarale, Prayush Kumar, Steven
+  Reyes, dfinstad, Sumit Kumar, Márton Tápai, Leo Singer, Praveen Kumar,
+  veronica villa, maxtrevor, Bhooshan Uday~Varsha Gadre, Sebastian Khan,
+  Stephen Fairhurst, and Arthur Tolley.
+\newblock gwastro/pycbc: v2.3.3 release of pycbc, January 2024.
+
+\bibitem{Storn:1997uea}
+Rainer Storn and Kenneth Price.
+\newblock {Differential Evolution \textendash{} A Simple and Efficient
+  Heuristic for global Optimization over Continuous Spaces}.
+\newblock {\em J. Global Optim.}, 11(4):341--359, 1997.
+
+\bibitem{Virtanen:2019joe}
+Pauli Virtanen et~al.
+\newblock {SciPy 1.0--Fundamental Algorithms for Scientific Computing in
+  Python}.
+\newblock {\em Nature Meth.}, 17:261, 2020.
+
+\bibitem{Jeffreys:1939xee}
+Harold Jeffreys.
+\newblock {\em {The Theory of Probability}}.
+\newblock Oxford Classic Texts in the Physical Sciences. 1939.
+
+\bibitem{Kass:1995loi}
+Robert~E. Kass and Adrian~E. Raftery.
+\newblock {Bayes Factors}.
+\newblock {\em J. Am. Statist. Assoc.}, 90(430):773--795, 1995.
+
+\bibitem{Thrane:2018qnx}
+Eric Thrane and Colm Talbot.
+\newblock {An introduction to Bayesian inference in gravitational-wave
+  astronomy: parameter estimation, model selection, and hierarchical models}.
+\newblock {\em Publ. Astron. Soc. Austral.}, 36:e010, 2019.
+\newblock [Erratum: Publ.Astron.Soc.Austral. 37, e036 (2020)].
+
+\bibitem{DelPozzo:2011pg}
+Walter Del~Pozzo, John Veitch, and Alberto Vecchio.
+\newblock {Testing General Relativity using Bayesian model selection:
+  Applications to observations of gravitational waves from compact binary
+  systems}.
+\newblock {\em Phys. Rev. D}, 83:082002, 2011.
+
+\end{thebibliography}
